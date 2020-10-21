@@ -1,0 +1,164 @@
+ <div>
+    <form [formGroup]="ngForm" (ngSubmit)="profileSubmit()">
+        <p>
+            <input type="text" class="form-control" formControlName="firstName" [value]=ngForm.value.firstName id="fname" placeholder="First Name"
+            name="firstName">
+        </p>
+        <p>
+            <input type="text" class="form-control" formControlName="lastName" [value]=ngForm.value.lastName id="lname" placeholder="Last Name"
+            name="lastName">
+        </p>
+        <p>
+            <input type="text" class="form-control" formControlName="phoneNumber" [value]=ngForm.value.phoneNumber id="phoneno" placeholder="Phone Number"
+            name="phoneNumber">
+        </p>
+        <p>
+            <input type="text" class="form-control" formControlName="profileTitle" [value]=ngForm.value.profileTitle id="title" placeholder="Title"
+            name="profileTitle">
+        </p>
+        <p>
+            <input type="file" accept="image/*" placeholder="Choose file" name="profileImage" [value]=ngForm.value.profileImage
+            (change)="onChangeImage($event)" formControlName="profileImage" required/>
+        </p>
+        
+        <p>
+            <input type="text" class="form-control" formControlName="dob" [value]=ngForm.value.dob id="dob" placeholder="Date of Birth"
+            name="dob">
+        </p>
+        <p>
+            <input type="text" class="form-control" formControlName="companyName"  id="cname" placeholder="Company Name"
+            name="companyName">
+        </p>
+        <p>
+            <input type="text" class="form-control" formControlName="cityName"  [value]=ngForm.value.cityName id="city" placeholder="City"
+            name="cityName">
+        </p>
+        <p>
+            <input type="text" class="form-control" formControlName="stateName" [value]=ngForm.value.stateName id="state" placeholder="State"
+            name="stateName">
+        </p>
+        <p>
+            <input type="text" class="form-control" formControlName="zipcode" [value]=ngForm.value.zipcode id="zipcode" placeholder="Zipcode"
+            name="zipcode">
+        </p>
+        <p>
+            <input type="text" class="form-control" formControlName="planId" [value]=ngForm.value.planId id="planId" placeholder="Plan ID"
+            name="zipcode">
+        </p>
+        <p>
+            <button type="submit">Save</button>
+        </p>
+    </form>
+</div> 
+<!-- <div class="content-wrapper">
+   
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="head-title">Edit Profile</h1>
+          </div>
+        </div>
+      </div>
+    </section>
+
+   
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-8 profile-edit">
+           
+            <div class="card">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-4">
+                    <label>Email</label>
+                    <input type="text" class="form-control" placeholder="Company">
+                  </div>
+                  <div class="col-3">
+                    <label>User Name</label>
+                    <input type="text" class="form-control" placeholder="User Name">
+                  </div>
+                  <div class="col-5">
+                    <label>Email Address</label>
+                    <input type="text" class="form-control" placeholder="Email Address">
+                  </div>
+                  <div class="col-6">
+                    <label>First Name</label>
+                    <input type="text" class="form-control" placeholder="First Name">
+                  </div>
+                  <div class="col-6">
+                    <label>Last Name</label>
+                    <input type="text" class="form-control" placeholder="Last Name">
+                  </div>
+                  <div class="col-12">
+                    <label>Address</label>
+                    <input type="text" class="form-control" placeholder="Address">
+                  </div>
+                  <div class="col-4">
+                    <label>City</label>
+                    <input type="text" class="form-control" placeholder="City">
+                  </div>
+                  <div class="col-4">
+                    <label>Country</label>
+                    <input type="text" class="form-control" placeholder="Country">
+                  </div>
+                  <div class="col-4">
+                    <label>Postal Code</label>
+                    <input type="text" class="form-control" placeholder="Postal Code">
+                  </div>
+                </div>
+              </div>
+             
+            </div>
+
+          </div>
+          <div class="col-1"></div>
+          <div class="col-3">
+           
+            <div class="card">
+              
+              <div class="card-body">
+                <div class="box box-widget widget-user">
+          
+            <div class="widget-user-header bg-black" style="background: url('dist/img/photo1.png') center center;">
+              
+            </div>
+            <div class="widget-user-image">
+              <img class="img-circle" src="images/Profile Image.png" alt="User Avatar">
+            </div>
+            <div class="box-footer">
+              <div class="row">
+                <div class="col-md-12 border-right">
+                  <div class="user-desc">
+                    <h3 class="user-name">Devin Coldewey</h3>
+                      <h5 class="user-job">Designer</h5>
+                    <p class="user-description">One of the co-founders. Alec drives the technical strategy of the platform, customer support and brand.</p>
+                    <div class="social-icons">
+        <ul>
+          <li><a href="#"><img src="images/facebook.png"></a></li>
+          <li><a href="#"><img src="images/twitter.png"></a></li>
+          <li><a href="#"><img src="images/linkedin.png"></a></li>
+        </ul>
+      </div>
+                  </div>
+                </div>
+                
+              </div>
+            
+            </div>
+          </div>
+              </div>
+              
+              
+              
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+    
+  </div>
+
+</div> -->

@@ -1,0 +1,14 @@
+.email{
+    background: #c4ccd4;
+    border-radius: 3px;
+    zoom: 1.2;
+
+}
+.alert{
+    zoom: 1.3;
+    background: rgb(42, 119, 221);
+    color:white;
+    width:100%;
+    display:flex;
+    justify-content: center;
+  }

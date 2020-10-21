@@ -1,0 +1,8 @@
+.view{
+    color:blue;
+cursor:pointer;
+}
+.view:hover{
+    color:red;
+    cursor:pointer;
+}
