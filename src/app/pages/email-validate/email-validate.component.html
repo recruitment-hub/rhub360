@@ -26,13 +26,66 @@
  -->
  
  <div class="home register-bg">
-    <app-login></app-login>
-    <div>
-      <ngb-alert *ngIf="!staticAlertClosed" (close)="staticAlertClosed = true"></ngb-alert>
+  <div>
+    <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="#"><img src="../../../assets/logo.png"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
   
-      <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = ''" class="alert">{{ successMessage }}
-      </ngb-alert>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto custom-menu">
+        <li class="nav-item active">
+          <a class="nav-link" href="#"><span>Service</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#"><span>Data</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#"><span>Leads</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#"><span>Package</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#"><span>Contact</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" (click)="registerEnter()" style="cursor: pointer;"><span>Register</span></a>
+        </li>
+      </ul>
+        <button class="btn btn-primary  my-2 my-sm-0 login-btn" (click)="loginEnter()">LOGIN</button>
     </div>
+  </nav>
+</div>
+<div  class="section section-notifications">
+  <div *ngIf="message ==='success'" class="alert alert-info" role="alert">
+    <div class="container">
+      <div class="alert-icon">
+        <i class="now-ui-icons ui-2_like"></i>
+      </div>
+      <strong>Warning!!</strong> Email already Registered
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">
+          <i class="now-ui-icons ui-1_simple-remove"></i>
+        </span>
+      </button>
+    </div>
+  </div>
+  <div  *ngIf="message ==='warning'" class="alert alert-danger" role="alert">
+    <div class="container">
+      <div class="alert-icon">
+        <i class="now-ui-icons objects_support-17"></i>
+      </div>
+      <strong>Warning!!</strong>Password and Confirm Password Must be Same
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">
+          <i class="now-ui-icons ui-1_simple-remove"></i>
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
     <div class="main-content">
         <div class="container">
           <div class="row height-50"></div>

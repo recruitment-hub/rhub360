@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonService } from 'src/app/services/common.service';
-import {Subject} from 'rxjs';
-import {debounceTime} from 'rxjs/operators';
+
 @Component({
   selector: 'app-userlogin',
   templateUrl: './userlogin.component.html',
@@ -11,26 +10,27 @@ import {debounceTime} from 'rxjs/operators';
 })
 export class UserloginComponent implements OnInit {
   clicked = false;
-  private _success = new Subject<string>();
-  successMessage = '';
-  staticAlertClosed = false;
+  
   public ngForm = new FormGroup({
     email: new FormControl('', [Validators.required]),
     pwd: new FormControl('', [Validators.required])
   })
   userId: any;
+  profileData: any;
+  message: string;
   constructor(public router: Router, 
     public httpService: CommonService) { }
 
   ngOnInit(): void {
-    setTimeout(() => this.staticAlertClosed = true, 20000);
 
-    this._success.subscribe(message => this.successMessage = message);
-    this._success.pipe(
-      debounceTime(5000)
-    ).subscribe(() => this.successMessage = '');
   }
   craeteAccount(){
+    this.router.navigate(['register']);
+  }
+  loginEnter() {
+    this.router.navigate(['userlogin']);
+  }
+  registerEnter() {
     this.router.navigate(['register']);
   }
   loginSubmit() {
@@ -41,14 +41,25 @@ export class UserloginComponent implements OnInit {
     this.httpService.post('recruiter/recruiterLogin', obj).subscribe((res: any) => {
       console.log("res login", res);
       if(res.status==="7400"){
+        this.message='success'
         var user = res.value;
         this.userId = user._id;
         sessionStorage.setItem('userId',this.userId);
         sessionStorage.setItem('userData', JSON.stringify(user));
-        this.router.navigate(['dashboard']);
+        this.httpService.get(`recruiter/viewRecruiterDetails/${this.userId}`).subscribe((resp:any)=>{
+          console.log("profile res",resp);
+          this.profileData = resp.value;
+          console.log("planId",this.profileData.planId);
+        if(this.profileData.planId === '' || this.profileData.planId === undefined || this.profileData.planId === null){
+          this.router.navigate(['dashboard']);
+        }
+        else{
+          this.router.navigate(['dashboard/joblist']);
+        }
+        })
       }
       else{
-        this._success.next("Email or Password Incorrect. Try again");
+        this.message='warning';
       }
     })
   }

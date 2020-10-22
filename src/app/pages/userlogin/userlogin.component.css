@@ -1,0 +1,10 @@
+.link{
+    cursor:pointer;
+    text-shadow: skyblue;
+    
+
+}
+.link:hover{
+    text-decoration: underline;
+}
+

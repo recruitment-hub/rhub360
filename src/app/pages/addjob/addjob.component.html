@@ -1,12 +1,129 @@
-<div>
-  
-    <div>
-        <ngb-alert *ngIf="!staticAlertClosed" (close)="staticAlertClosed = true"></ngb-alert>
-    
-        <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = ''" class="alert">{{ successMessage }}
-        </ngb-alert>
+<div class="content-wrapper">
+    <div  class="section section-notifications">
+        <div *ngIf="message ==='success'" class="alert alert-success" role="alert">
+          <div class="container">
+            <div class="alert-icon">
+              <i class="now-ui-icons ui-2_like"></i>
+            </div>
+            <strong>Well done!</strong> Successfully Submitted
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">
+                <i class="now-ui-icons ui-1_simple-remove"></i>
+              </span>
+            </button>
+          </div>
+        </div>
+        <div  *ngIf="message ==='warning'" class="alert alert-danger" role="alert">
+          <div class="container">
+            <div class="alert-icon">
+              <i class="now-ui-icons objects_support-17"></i>
+            </div>
+            <strong>Error!!</strong> Try Again
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">
+                <i class="now-ui-icons ui-1_simple-remove"></i>
+              </span>
+            </button>
+          </div>
+        </div>
       </div>
-    <form class="" [formGroup]="ngForm" (ngSubmit)="jobSubmit()">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="head-title">Job Details</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div>
+        <ngb-alert *ngIf="!staticAlertClosed" (close)="staticAlertClosed = true"></ngb-alert>
+
+        <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = ''" class="alert">
+            {{ successMessage }}
+        </ngb-alert>
+    </div> -->
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-10 profile-edit">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <form [formGroup]="ngForm" (ngSubmit)="jobSubmit()">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label>Title</label>
+                                        <input type="text" class="form-control" formControlName="jobTitle"
+                                            placeholder="Job Title" [value]=ngForm?.value.jobTitle>
+                                    </div>
+                                    <div class="col-4">
+                                        <label>Location</label>
+                                        <input type="text" class="form-control" formControlName="jobLocation"
+                                            placeholder="Job Location" [value]=ngForm?.value.jobLocation>
+                                    </div>
+                                    <div class="col-4">
+                                        <label>No.Of Vacancies</label>
+                                        <input type="text" class="form-control" formControlName="noOfVacancies"
+                                            id="noofvacancy" [value]=ngForm?.value.noOfVacancies placeholder="No.Of Vacancy" name="noOfVacancies">
+                                    </div>
+                                    <div class="col-4">
+                                        <label>Industry Vacancy</label>
+                                        <input type="text" class="form-control" formControlName="industryVacancy"
+                                            id="industryVacancy" [value]=ngForm?.value.industryVacancy placeholder="Industry Vacancy" name="industryVacancy">
+                                    </div>
+                                    <div class="col-8">
+                                        <label>Company</label>
+                                        <!--  <input type="text" class="form-control" formControlName="companyName"
+                                            placeholder="Company Name" [value]=ngForm?.value.companyName> -->
+                                        <select class="form-control" formControlName="companyId"
+                                            placeholder="Company Name" [value]=ngForm?.value.companyName data-size="7"
+                                            data-style="btn btn-primary btn-round btn-block" title="Select Company">
+                                            <option *ngFor="let company of companyData" [value]="company?._id">
+                                                {{company?.companyName}}</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="col-4">
+                                        <label>Experience</label>
+                                        <input type="text" class="form-control" formControlName="yearsOfExp" id="exp"
+                                            placeholder="Years of Experience" [value]=ngForm?.value.yearsOfExp name="yearsOfExp">
+                                    </div>
+                                    <div class="col-4">
+                                        <label>Minimum Salary</label>
+                                        <input type="text" class="form-control" formControlName="minSalaryRange"
+                                            id="minsalary"[value]=ngForm?.value.minSalaryRange  placeholder="Minimum Salary Range" name="minSalaryRange">
+                                    </div>
+                                    <div class="col-4">
+                                        <label>Maximum Salary</label>
+                                        <input type="text" class="form-control" formControlName="maxSalaryRange"
+                                            id="maxsalary"  [value]=ngForm?.value.maxSalaryRange placeholder="Maximum Salary Range" name="maxSalaryRange">
+                                    </div>
+                                   
+
+                                    <div class="col-12">
+                                        <label>Description</label>
+                                        <input type="text" class="form-control" formControlName="jobDescription"
+                                            [value]=ngForm?.value.jobDescription placeholder="Job Description">
+                                    </div>
+
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary"
+                                            style="float: right;">Save</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <form class="addedit" [formGroup]="ngForm" (ngSubmit)="jobSubmit()">
         <p>
             <input type="text" class="form-control" formControlName="companyName" id="name" placeholder="Company Name"
                 name="companyName">
@@ -68,4 +185,4 @@
             <button type="submit" class="btn btn-primary btn-lg btn-block">Save</button>
         </p>
     </form>
-</div>
+</div> -->

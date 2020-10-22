@@ -14,15 +14,15 @@ export class EmailValidateComponent implements OnInit {
   param: any;
   clicked = false;
   email:any;
-  private _success = new Subject<string>();
-  successMessage = '';
-  staticAlertClosed = false;
+  
   public ngForm = new FormGroup({
     //email:new FormControl(''),
     pwd: new FormControl('', [Validators.required]),
     cpwd: new FormControl('', [Validators.required])
   })
   userId: any;
+  profileData: any;
+  message: string;
   constructor(private route: ActivatedRoute, 
     public router: Router, 
     public httpService: CommonService) {
@@ -33,14 +33,14 @@ export class EmailValidateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    setTimeout(() => this.staticAlertClosed = true, 20000);
-
-    this._success.subscribe(message => this.successMessage = message);
-    this._success.pipe(
-      debounceTime(5000)
-    ).subscribe(() => this.successMessage = '');
+    
   }
-  
+  loginEnter() {
+    this.router.navigate(['userlogin']);
+  }
+  registerEnter() {
+    this.router.navigate(['register']);
+  }
   passwordSubmit() {
     if(this.ngForm.value.pwd === this.ngForm.value.cpwd){
 
@@ -54,15 +54,26 @@ export class EmailValidateComponent implements OnInit {
       if(res.status === "7400"){
         this.userId = res.userId;
         sessionStorage.setItem('userId',this.userId);
-        this.router.navigate(['plans']);
+        this.httpService.get(`recruiter/viewRecruiterDetails/${this.userId}`).subscribe((resp:any)=>{
+          console.log("profile res",resp);
+          this.profileData = resp.value;
+        if(this.profileData.planId === '' || this.profileData.planId === undefined || this.profileData.planId === null){
+          this.router.navigate(['dashboard']);
+        }
+        else{
+          this.router.navigate(['dashboard/joblist']);
+        }
+      })
       }
       else{
-        this._success.next("Email already Registered.")
+        //this._success.next("Email already Registered.")
+        this.message='success'
       }
     })
   }
   else{
-    this._success.next("Password and Confirm Password Must be Same");
+    //this._success.next("Password and Confirm Password Must be Same");
+    this.message='warning';
   }
   }
 }

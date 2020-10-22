@@ -1,3 +1,75 @@
-<mat-card *ngFor="let data of planData;index as i">
+<!-- <mat-card *ngFor="let data of planData;index as i">
 {{i}}{{data.planName}}
-</mat-card>
+</mat-card> -->
+<div class="content">
+  
+    <div class="plans">
+      <div  class="section section-notifications">
+        <div *ngIf="message ==='success'" class="alert alert-success" role="alert">
+          <div class="container">
+            <div class="alert-icon">
+              <i class="now-ui-icons ui-2_like"></i>
+            </div>
+            <strong>Well Done!!</strong>Successfully Plan Selected
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">
+                <i class="now-ui-icons ui-1_simple-remove"></i>
+              </span>
+            </button>
+          </div>
+        </div>
+        <div  *ngIf="message ==='warning'" class="alert alert-danger" role="alert">
+          <div class="container">
+            <div class="alert-icon">
+              <i class="now-ui-icons objects_support-17"></i>
+            </div>
+            <strong>Error!!</strong>Try Again
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">
+                <i class="now-ui-icons ui-1_simple-remove"></i>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <h2 class="plan-title-head">Pick the best plan for you</h2>
+            <p class="plan-desc-head">You have Free Unlimited Updates and Premium Support on each package.</p>
+      <div class="row plan">
+            <div class="col-1"></div>
+        <div class="col-3">
+          <div class="card">
+                <div class="card-body">
+                  <h3 class="plan-title text-center">{{planData[0]?.planName}}</h3>
+                  <img src="../../../assets/started.png" class="plan-img">
+                  <span class="plan-price">{{planData[0]?.planRate}}</span>
+                  <p class="plan-desc">This is good if your company size is between 100 and 299 employees.</p>
+                  <button type="submit" class="btn btn-primary"(click)="planOne(planData[0]?._id)"><span>BUY NOW</span></button>
+                </div>
+              </div>
+        </div>
+        <div class="col-3">
+          <div class="card">
+                <div class="card-body">
+                  <h3 class="plan-title text-center">{{planData[1]?.planName}}</h3>
+                  <img src="../../../assets/dimond.png" class="plan-img">
+                  <span class="plan-price">{{planData[1]?.planRate}}</span>
+                  <p class="plan-desc">This is good if your company size is between 100 and 299 employees.</p>
+                  <button type="submit" class="btn btn-primary" (click)="planTwo(planData[1]?._id)"><span>BUY NOW</span></button>
+                </div>
+              </div>
+        </div>
+        <div class="col-3">
+          <div class="card">
+                <div class="card-body">
+                  <h3 class="plan-title text-center">{{planData[2]?.planName}}</h3>
+                  <img src="../../../assets/alpha-pack.png" class="plan-img">
+                  <span class="plan-price">{{planData[2]?.planRate}}</span>
+                  <p class="plan-desc">This is good if your company size is between 100 and 299 employees.</p>
+                  <button type="submit" class="btn btn-primary" (click)="planThree(planData[2]?._id)"><span>BUY NOW</span></button>
+                </div>
+              </div>
+        </div>
+        <div class="col-1"></div>
+    </div>
+    </div>
+  </div>

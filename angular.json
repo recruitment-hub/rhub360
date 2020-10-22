@@ -27,6 +27,7 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css",
               "src/css/bootstrap.min.css",
+              "src/css/bootstrap.css",
               "src/css/bootstrap-grid.css",
               "src/css/custom.css",
               "src/plugins/fontawesome-free/css/all.min.css",

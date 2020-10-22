@@ -9,9 +9,14 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditprofileComponent } from './editprofile/editprofile.component';
+import { EmailValidateComponent } from './email-validate/email-validate.component';
+import { UserloginComponent } from './userlogin/userlogin.component';
+import { CompanylistComponent } from './companylist/companylist.component';
+import { AddeditcompanyComponent } from './addeditcompany/addeditcompany.component';
+import { ViewcompanyComponent } from './viewcompany/viewcompany.component';
 
 @NgModule({
-  declarations: [PlansComponent, AddjobComponent, JoblistComponent, ProfileComponent, ViewjobComponent, EditprofileComponent],
+  declarations: [PlansComponent, AddjobComponent, UserloginComponent,EmailValidateComponent,JoblistComponent, ProfileComponent, ViewjobComponent, EditprofileComponent, CompanylistComponent, AddeditcompanyComponent, ViewcompanyComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,

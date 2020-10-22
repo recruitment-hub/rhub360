@@ -14,9 +14,8 @@ export class RegisterComponent implements OnInit {
   emailId: any;
   res: any;
   clicked = false;
-  private _success = new Subject<string>();
-  successMessage = '';
-  staticAlertClosed = false;
+  message: string;
+  
   constructor(public httpService: CommonService) {
 
   }
@@ -26,12 +25,7 @@ export class RegisterComponent implements OnInit {
   })
 
   ngOnInit(): void {
-    setTimeout(() => this.staticAlertClosed = true, 20000);
-
-    this._success.subscribe(message => this.successMessage = message);
-    this._success.pipe(
-      debounceTime(5000)
-    ).subscribe(() => this.successMessage = '');
+    
   }
 
   registerSubmit() {
@@ -49,12 +43,14 @@ export class RegisterComponent implements OnInit {
         this.emailId = res.email;
         sessionStorage.setItem('email', this.emailId);
         console.log("res", res);
-        this._success.next('Successfully Registered');
+        this.message='success';
+        //this._success.next('Successfully Registered');
         //this.successMessage = res.message
         //alert("Successfully Registered");
       }
       else {
-        this._success.next("Email already Registered. You can Login directly");
+        this.message='warning';
+        //this._success.next("Email already Registered. You can Login directly");
       }
 
     })

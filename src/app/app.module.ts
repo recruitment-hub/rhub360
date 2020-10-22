@@ -14,6 +14,7 @@ import { ComponentModule } from './component/component.module';
 import { DashboardComponent } from './layout/dashboard/dashboard.component';
 //import { LayoutModule } from '@angular/cdk/layout';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { CommonService } from './services/common.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     NgbModule
   ],
   providers: [
-    Location, { provide: LocationStrategy, useClass: HashLocationStrategy }
+    Location, { provide: LocationStrategy, useClass: HashLocationStrategy },CommonService
   ],
   bootstrap: [AppComponent]
 })
