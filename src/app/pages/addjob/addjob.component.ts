@@ -21,12 +21,13 @@ export class AddjobComponent implements OnInit {
     jobLocation: new FormControl('', [Validators.required]),
     minSalaryRange: new FormControl('', [Validators.required]),
     maxSalaryRange: new FormControl('', [Validators.required]),
-    industryVacancy: new FormControl('', [Validators.required]),
+   // industryVacancy: new FormControl('', [Validators.required]),
   })
   userId: any;
   jobId: any;
   companyData: any;
   message: string;
+  jobData: any;
   constructor(public service: CommonService, public route: ActivatedRoute) {
     this.jobId = this.route.snapshot.params['id'];
     console.log("job id", this.jobId);
@@ -36,10 +37,25 @@ export class AddjobComponent implements OnInit {
     //sessionStorage.get
     this.userId = sessionStorage.getItem('userId');
     console.log("userId", this.userId);
+    
     this.service.get(`company/viewMyCompanies/${this.userId}`).subscribe((res: any) => {
       console.log("company list res", res);
       this.companyData = res.value;
+      if(this.jobId!==undefined){
+      this.service.get(`job/viewJobDetails/${this.jobId}`).subscribe((resp: any) => {
+        console.log("view job res", resp);
+        this.jobData = resp.value;
+        this.ngForm.value.noOfVacancies=this.jobData.noOfVacancies;
+        this.ngForm.value.jobTitle=this.jobData.jobTitle;
+        this.ngForm.value.jobDescription=this.jobData.jobDescription;
+        this.ngForm.value.yearsOfExp=this.jobData.yearsOfExp;
+        this.ngForm.value.jobLocation=this.jobData.jobLocation;
+        this.ngForm.value.minSalaryRange=this.jobData.minSalaryRange;
+        this.ngForm.value.maxSalaryRange=this.jobData.maxSalaryRange;
+
     })
+  }
+  })
   }
   jobSubmit() {
     // alert("submitted")
@@ -57,7 +73,7 @@ export class AddjobComponent implements OnInit {
         jobLocation: this.ngForm.value.jobLocation,
         minSalaryRange: this.ngForm.value.minSalaryRange,
         maxSalaryRange: this.ngForm.value.maxSalaryRange,
-        industryVacancy: this.ngForm.value.industryVacancy
+       // industryVacancy: this.ngForm.value.industryVacancy
       }
       console.log("data", obj);
       this.service.post(`job/postNewJob`, obj).subscribe((res: any) => {
@@ -81,7 +97,7 @@ export class AddjobComponent implements OnInit {
         jobLocation: this.ngForm.value.jobLocation,
         minSalaryRange: this.ngForm.value.minSalaryRange,
         maxSalaryRange: this.ngForm.value.maxSalaryRange,
-        industryVacancy: this.ngForm.value.industryVacancy
+       // industryVacancy: this.ngForm.value.industryVacancy
       }
       console.log("data with job id", obj);
       this.service.put(`job/editJob/${this.jobId}`, obj).subscribe((res: any) => {

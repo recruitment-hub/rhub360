@@ -53,28 +53,24 @@
                         <div class="card-body">
                             <form [formGroup]="ngForm" (ngSubmit)="jobSubmit()">
                                 <div class="row">
-                                    <div class="col-4">
+                                    <div class="col-6">
                                         <label>Title</label>
                                         <input type="text" class="form-control" formControlName="jobTitle"
-                                            placeholder="Job Title" [value]=ngForm?.value.jobTitle>
+                                            placeholder="" [value]=ngForm?.value.jobTitle required>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-6">
                                         <label>Location</label>
                                         <input type="text" class="form-control" formControlName="jobLocation"
-                                            placeholder="Job Location" [value]=ngForm?.value.jobLocation>
+                                            placeholder="" [value]=ngForm?.value.jobLocation required>
                                     </div>
                                     <div class="col-4">
                                         <label>No.Of Vacancies</label>
                                         <input type="text" class="form-control" formControlName="noOfVacancies"
-                                            id="noofvacancy" [value]=ngForm?.value.noOfVacancies placeholder="No.Of Vacancy" name="noOfVacancies">
+                                            id="noofvacancy" [value]=ngForm?.value.noOfVacancies placeholder="" name="noOfVacancies" required>
                                     </div>
-                                    <div class="col-4">
-                                        <label>Industry Vacancy</label>
-                                        <input type="text" class="form-control" formControlName="industryVacancy"
-                                            id="industryVacancy" [value]=ngForm?.value.industryVacancy placeholder="Industry Vacancy" name="industryVacancy">
-                                    </div>
+                                    
                                     <div class="col-8">
-                                        <label>Company</label>
+                                        <label>Select Company</label>
                                         <!--  <input type="text" class="form-control" formControlName="companyName"
                                             placeholder="Company Name" [value]=ngForm?.value.companyName> -->
                                         <select class="form-control" formControlName="companyId"
@@ -88,29 +84,30 @@
                                     <div class="col-4">
                                         <label>Experience</label>
                                         <input type="text" class="form-control" formControlName="yearsOfExp" id="exp"
-                                            placeholder="Years of Experience" [value]=ngForm?.value.yearsOfExp name="yearsOfExp">
+                                            placeholder="" [value]=ngForm?.value.yearsOfExp name="yearsOfExp" required>
                                     </div>
                                     <div class="col-4">
                                         <label>Minimum Salary</label>
                                         <input type="text" class="form-control" formControlName="minSalaryRange"
-                                            id="minsalary"[value]=ngForm?.value.minSalaryRange  placeholder="Minimum Salary Range" name="minSalaryRange">
+                                            id="minsalary"[value]=ngForm?.value.minSalaryRange  placeholder="" name="minSalaryRange" required>
                                     </div>
                                     <div class="col-4">
                                         <label>Maximum Salary</label>
                                         <input type="text" class="form-control" formControlName="maxSalaryRange"
-                                            id="maxsalary"  [value]=ngForm?.value.maxSalaryRange placeholder="Maximum Salary Range" name="maxSalaryRange">
+                                            id="maxsalary"  [value]=ngForm?.value.maxSalaryRange placeholder="" name="maxSalaryRange" required>
                                     </div>
                                    
 
                                     <div class="col-12">
                                         <label>Description</label>
-                                        <input type="text" class="form-control" formControlName="jobDescription"
-                                            [value]=ngForm?.value.jobDescription placeholder="Job Description">
+                                        <textarea class="form-control" formControlName="jobDescription"
+                                            [value]=ngForm?.value.jobDescription placeholder=""></textarea>
                                     </div>
 
                                     <div class="col-12">
+                                        <br>
                                         <button type="submit" class="btn btn-primary"
-                                            style="float: right;">Save</button>
+                                            style="float: right;"><i class="fas fa-save"></i>&nbsp;Save</button>
                                     </div>
                                 </div>
                             </form>

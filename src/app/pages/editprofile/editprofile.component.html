@@ -51,7 +51,7 @@
     </form>
 </div> -->
 <div class="content-wrapper">
-  <div  class="section section-notifications">
+  <div class="section section-notifications">
     <div *ngIf="message ==='success'" class="alert alert-success" role="alert">
       <div class="container">
         <div class="alert-icon">
@@ -65,7 +65,7 @@
         </button>
       </div>
     </div>
-    <div  *ngIf="message ==='warning'" class="alert alert-danger" role="alert">
+    <div *ngIf="message ==='warning'" class="alert alert-danger" role="alert">
       <div class="container">
         <div class="alert-icon">
           <i class="now-ui-icons objects_support-17"></i>
@@ -101,73 +101,96 @@
                 <div class="row">
                   <div class="col-6">
                     <label>First Name</label>
-                    <input type="text" class="form-control" placeholder="First Name" formControlName="firstName"
+                    <input type="text" class="form-control" placeholder="" formControlName="firstName"
                       [value]=ngForm.value.firstName>
                   </div>
                   <div class="col-6">
                     <label>Last Name</label>
-                    <input type="text" class="form-control" placeholder="Last Name" formControlName="lastName"
+                    <input type="text" class="form-control" placeholder="" formControlName="lastName"
                       [value]=ngForm.value.lastName>
                   </div>
-                  <div class="col-12">
+                  <div class="col-4">
                     <label>Profile</label>
                     <input class="form-control" type="file" accept="image/*" placeholder="Choose file"
                       name="profileImage" (change)="onChangeImage($event)" formControlName="profileImage">
                   </div>
                   <div class="col-4">
                     <label>State</label>
-                    <input type="text" class="form-control" placeholder="State" formControlName="stateName"
+                    <input type="text" class="form-control" placeholder="" formControlName="stateName"
                       [value]=ngForm.value.stateName>
                   </div>
                   <div class="col-4">
                     <label>City</label>
-                    <input type="text" class="form-control" placeholder="City">
+                    <input type="text" class="form-control" placeholder="" formControlName="cityName"
+                      [value]=ngForm.value.cityName>
                   </div>
-                  <div class="col-4">
-                    <label>Country</label>
-                    <input type="text" class="form-control" placeholder="Country">
-                  </div>
-                  
+
+
                   <div class="col-4">
                     <label>Company</label>
-                    <input type="text" class="form-control" formControlName="companyName" placeholder="Company Name"
+                    <input type="text" class="form-control" formControlName="companyName" placeholder=""
                       [value]=ngForm.value.companyName>
                   </div>
                   <div class="col-4">
-                    <label>Title</label>
+                    <label>Job Role</label>
                     <input type="text" class="form-control" formControlName="profileTitle"
-                      [value]=ngForm.value.profileTitle placeholder="Title">
+                      [value]=ngForm.value.profileTitle placeholder="">
                   </div>
                   <div class="col-4">
                     <label>DOB</label>
-                    <input type="text" class="form-control" formControlName="dob" [value]=ngForm.value.dob
-                      placeholder="Date Of Birth" [value]=ngForm.value.dob>
+                    <input type="text" class="form-control" formControlName="dob"
+                      placeholder="MM/dd/YYYY" [value]=ngForm.value.dob>
                   </div>
-                  
+
                   <div class="col-4">
                     <label>Phone Number</label>
-                    <input type="text" class="form-control" placeholder="Phone Number" formControlName="phoneNumber"
+                    <input type="text" class="form-control" placeholder="" formControlName="phoneNumber"
                       [value]=ngForm.value.phoneNumber>
                   </div>
                   <div class="col-4">
                     <label>Postal Code</label>
-                    <input type="text" class="form-control" placeholder="Postal Code">
-                  </div>
-                   <div class="col-4">
-                    <label>PlanId</label>
-                    <input type="text" class="form-control" formControlName="planId" [value]=ngForm.value.planId
-                      placeholder="Plan ID">
+                    <input type="text" class="form-control" placeholder="" formControlName="zipcode" [value]=ngForm.value.zipcode>
                   </div>
                   <div class="col-4">
+                    <label>Plan Name</label>
+                   <!--  <input type="text" class="form-control" formControlName="planId" [value]=ngForm.value.planId
+                      placeholder="Plan ID"> -->
+                      <select class="form-control" formControlName="planName"
+                      placeholder="Select Plan Name" [value]=ngForm?.value.planName data-size="7"
+                      data-style="btn btn-primary btn-round btn-block" title="Select Plan">
+                      <option *ngFor="let plan of planData" [value]="plan?._id">
+                          {{plan?.planName}}</option>
+                  </select>
+                  </div>
+                 <!--  <div class="col-4">
                     <button type="button" class="btn btn-primary" style="float: right;" (click)="changePlan()">Change
                       Plan</button>
+                  </div> -->
+                  <div class="col-4">
+                    <label>Facebook URL</label>
+                    <input type="text" class="form-control" placeholder="" formControlName="facebook" [value]=ngForm.value.facebook>
                   </div>
                   <div class="col-4">
-                    <button type="button" class="btn btn-primary" style="float: right;" (click)="changePass()">Change
+                    <label>Twitter URL</label>
+                    <input type="text" class="form-control" placeholder="" formControlName="twitter" [value]=ngForm.value.twitter>
+                  </div>
+                  <div class="col-4">
+                    <label>LinkedIn URL</label>
+                    <input type="text" class="form-control" placeholder="" formControlName="linkedin" [value]=ngForm.value.linkedin>
+                  </div>
+                  <div class="col-12">
+                    <label>Description</label>
+                    <textarea class="form-control" placeholder="" formControlName="description" [value]=ngForm.value.description></textarea>
+                  </div>
+                  
+                  <div class="col-8">
+                    <br>
+                    <button type="button" class="btn btn-primary" style="float: right;" (click)="changePass()"><i class="fas fa-key"></i>&nbsp;Change
                       Password</button>
                   </div>
                   <div class="col-4">
-                    <button type="submit" class="btn btn-primary" style="float: right;">Save</button>
+                    <br>
+                    <button type="submit" class="btn btn-primary" style="float: right;"><i class="fas fa-save"></i>&nbsp;Save</button>
                   </div>
                 </div>
               </form>
@@ -179,20 +202,20 @@
                 <div class="row">
                   <div class="col-3">
                     <label>Old Password</label>
-                    <input type="password" class="form-control" placeholder="Old Password" formControlName="old">
+                    <input type="password" class="form-control" placeholder="" formControlName="old">
                   </div>
                   <div class="col-3">
                     <label>New Password</label>
-                    <input type="password" class="form-control" placeholder="New Password" formControlName="newpass">
+                    <input type="password" class="form-control" placeholder="" formControlName="newpass">
                   </div>
                   <div class="col-3">
                     <label>Confirm New Password</label>
-                    <input type="password" class="form-control" placeholder="Confirm New Password"
+                    <input type="password" class="form-control" placeholder=""
                       formControlName="cpass">
                   </div>
                   <div class="col-3">
                     <button type="submit" class="btn btn-primary" style="position: relative;
-                    top: 20px;">Save</button>
+                    top: 20px;"><i class="fas fa-save"></i>&nbsp;Save</button>
                   </div>
                 </div>
               </form>
@@ -214,17 +237,17 @@
                   style="background: url('../../../assets/photo2.png') center center;">
 
                 </div>
-                <div class="widget-user-image">
-                  <img class="img-circle" src="../../../assets/Profile Image.png" alt="User Avatar">
+                <div *ngIf="imgshow" class="widget-user-image">
+                  <!--    <img class="img-circle" src="../../../assets/Profile Image.png" alt="User Avatar"> -->
+                  <img class="img-circle" src="https://recruiter-gallery.s3.us-east-2.amazonaws.com/{{fileName}}" alt="User Avatar">
                 </div>
                 <div class="box-footer">
                   <div class="row">
                     <div class="col-md-12 border-right">
                       <div class="user-desc">
-                        <h3 class="user-name">Devin Coldewey</h3>
-                        <h5 class="user-job">Designer</h5>
-                        <p class="user-description">One of the co-founders. Alec drives the technical strategy of the
-                          platform, customer support and brand.</p>
+                        <h3 class="user-name">{{ngForm.value.firstName}}&nbsp;{{ngForm.value.lastName}}</h3>
+                        <h5 class="user-job">{{ngForm.value.profileTitle}}</h5>
+                        <p class="user-description">{{ngForm.value.description}}</p>
                         <div class="social-icons">
                           <ul>
                             <li><a href="#"><img src="../../../assets/Facebook.png"></a></li>

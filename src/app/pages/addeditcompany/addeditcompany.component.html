@@ -49,39 +49,46 @@
                             <form [formGroup]="ngForm" (ngSubmit)="companySubmit()">
                                 <div class="row">
                                     <div class="col-4">
-                                        <label>Company</label>
+                                        <label>Company Name</label>
                                         <input type="text" class="form-control" formControlName="companyName"
-                                            placeholder="Company Name" [value]=ngForm?.value.companyName>
+                                            placeholder="" [value]=ngForm?.value.companyName>
                                     </div>
                                     <div class="col-4">
                                         <label>Industry</label>
-                                        <input type="text" class="form-control" formControlName="companyIndustry"
-                                            placeholder="Industry Type" [value]=ngForm?.value.companyIndustry>
+                                        <select class="form-control" formControlName="companyIndustry"
+                                        placeholder="" [value]=ngForm?.value.companyIndustry data-size="7"
+                                        data-style="btn btn-primary btn-round btn-block" title="Select Industry Type">
+                                        <option *ngFor="let industry of industryData" [value]="industry?.industryType">
+                                            {{industry?.industryType}}</option>
+                                    </select>
+                                        <!-- <input type="text" class="form-control" formControlName="companyIndustry"
+                                            placeholder="" [value]=ngForm?.value.companyIndustry> -->
                                     </div>
                                     <div class="col-4">
                                         <label>Location</label>
                                         <input type="text" class="form-control" formControlName="companyLocations"
-                                            placeholder="Company Location" [value]=ngForm?.value.companyLocations>
+                                            placeholder="" [value]=ngForm?.value.companyLocations>
                                     </div>
                                     <div class="col-6">
                                         <label>URL</label>
-                                        <input type="text" class="form-control" placeholder="Company URL"
+                                        <input type="text" class="form-control" placeholder=""
                                             formControlName="companyUrl" [value]=ngForm?.value.companyUrl>
                                     </div>
                                     <div class="col-6">
                                         <label>LinkedIn URL</label>
                                         <input type="text" class="form-control" formControlName="companyLinkedin"
-                                            placeholder="Company LinkedIn URL" [value]=ngForm?.value.companyLinkedin>
+                                            placeholder="" [value]=ngForm?.value.companyLinkedin>
                                     </div>
                                     <div class="col-12">
                                         <label>Description</label>
-                                        <input type="text" class="form-control" formControlName="companyDescription"
-                                            [value]=ngForm?.value.companyDescription placeholder="Company Description">
+                                        <textarea class="form-control" formControlName="companyDescription"
+                                            [value]=ngForm?.value.companyDescription placeholder=""></textarea>
                                     </div>
                                     
                                     <div class="col-12">
+                                      <br>
                                         <button type="submit" class="btn btn-primary"
-                                            style="float: right;">Save</button>
+                                            style="float: right;"><i class="fas fa-save"></i>&nbsp;Save</button>
                                     </div>
                                 </div>
                             </form>

@@ -17,8 +17,6 @@ export class PlansComponent implements OnInit {
     this.service.get(`recruiter/viewPaymentPlans`).subscribe((res:any)=>{
       this.planData = res.value;
       console.log("res plan",res);
-      
-
     })
   }
 planOne(id){

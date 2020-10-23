@@ -15,15 +15,21 @@ import { DashboardComponent } from './layout/dashboard/dashboard.component';
 //import { LayoutModule } from '@angular/cdk/layout';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CommonService } from './services/common.service';
+import {DpDatePickerModule} from 'ng2-date-picker';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxSpinnerModule } from "ngx-spinner";
+//import { WavesModule, TableModule } from 'angular-bootstrap-md';
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
+
   ],
 
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    NgxSpinnerModule,
     MaterialModule,
     AuthModule,
     LayoutModule,
@@ -34,7 +40,10 @@ import { CommonService } from './services/common.service';
     NgbPaginationModule,
     FlexLayoutModule,
     NgbAlertModule,
-    NgbModule
+    DpDatePickerModule ,
+    NgxPaginationModule,
+    NgbModule,
+    
   ],
   providers: [
     Location, { provide: LocationStrategy, useClass: HashLocationStrategy },CommonService

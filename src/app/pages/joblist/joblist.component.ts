@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { CommonService } from 'src/app/services/common.service';
 
 export interface Job {
@@ -20,28 +21,40 @@ export class JoblistComponent implements OnInit {
   userId: any;
   jobData = [];
   page = 1;
-  pageSize = 4;
+   pageSize = 4;
   collectionSize = 0;
+  total=0; 
   jobs: Job[];
   message: string;
-  constructor(public service: CommonService, public router: Router) {
+  pageOfItems: Array<any>;
+  
+  constructor(public service: CommonService, public router: Router,public spinner:NgxSpinnerService) {
     this.refreshCountries();
     
   }
-  refreshCountries() {
+    refreshCountries() {
     
     console.log("collection size page pagesize",this.collectionSize,this.page,this.pageSize)
     this.jobs = this.jobData
       .map((job, i) => ({ id: i + 1, ...job }))
       .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
-  }
+  }  
+ 
   ngOnInit(): void {
+    this.spinner.show();
+ 
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
+    }, 5000);
     this.userId = sessionStorage.getItem('userId');
     this.service.get(`job/viewJobsByRecruiter/${this.userId}`).subscribe((res: any) => {
       console.log("job list res", res);
       this.jobData = res.value;
       this.collectionSize=this.jobData.length;
-      console.log("collection size page pagesize",this.collectionSize,this.page,this.pageSize)
+      //this.total=this.jobData.length;
+      //console.log("collection size page pagesize",this.collectionSize,this.page,this.pageSize)
+      
     })
   }
   viewJob(id) {

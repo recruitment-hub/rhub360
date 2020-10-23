@@ -23,7 +23,11 @@ export class EditprofileComponent implements OnInit {
     stateName: new FormControl('', [Validators.required]),
     cityName: new FormControl('', [Validators.required]),
     zipcode: new FormControl('', [Validators.required]),
-    planId: new FormControl('', [Validators.required]),
+    planName: new FormControl('', [Validators.required]),
+    description: new FormControl('', [Validators.required]),
+    linkedin: new FormControl('', [Validators.required]),
+    facebook: new FormControl('', [Validators.required]),
+    twitter: new FormControl('', [Validators.required]),
   })
   public proForm = new FormGroup({
     old: new FormControl('', [Validators.required]),
@@ -32,6 +36,9 @@ export class EditprofileComponent implements OnInit {
   })
   profileData: any;
   files: any;
+  fileName: any;
+  imgshow=false;
+  planData: any;
   constructor(public service: CommonService, public route: ActivatedRoute, public router: Router) {
     //this.userId = this.route.snapshot.params['id'];
     this.userId = sessionStorage.getItem('userId');
@@ -40,7 +47,13 @@ export class EditprofileComponent implements OnInit {
   ngOnInit(): void {
     this.service.get(`recruiter/viewRecruiterDetails/${this.userId}`).subscribe((res: any) => {
       console.log("profile res", res);
+      this.imgshow=true
       this.profileData = res.value;
+      this.service.get(`recruiter/viewPaymentPlans`).subscribe((resp:any)=>{
+        this.planData = resp.value;
+        console.log("res plan",resp);
+      })
+      this.fileName=this.profileData.profileImage;
       this.ngForm.value.firstName = this.profileData.firstName;
       this.ngForm.value.lastName = this.profileData.lastName;
       this.ngForm.value.phoneNumber = this.profileData.phoneNumber;
@@ -51,7 +64,12 @@ export class EditprofileComponent implements OnInit {
       this.ngForm.value.stateName = this.profileData.stateName;
       this.ngForm.value.cityName = this.profileData.cityName;
       this.ngForm.value.zipcode = this.profileData.zipcode;
-      this.ngForm.value.planId = this.profileData.planId;
+      this.ngForm.value.planName = this.profileData.planName;
+      this.ngForm.value.description = this.profileData.description;
+      this.ngForm.value.facebook = this.profileData.facebook;
+      this.ngForm.value.twitter = this.profileData.twitter;
+      this.ngForm.value.linkedin = this.profileData.linkedin;
+      
     })
   }
   onChangeImage(event) {
@@ -60,6 +78,10 @@ export class EditprofileComponent implements OnInit {
     this.service.fileUpload(`common/uploadFile`, this.files).subscribe((res: any) => {
       console.log("upload profile res", res);
       this.ngForm.value.profileImage = res.fileName;
+      this.fileName=res.fileName;
+      this.service.put(`recruiter/changeAvatar/${this.userId}/${res.fileName}`,this.userId).subscribe((res:any)=>{
+        console.log("avatar change res",res);
+      })
     })
   }
   changePass() {
@@ -86,6 +108,7 @@ export class EditprofileComponent implements OnInit {
   changePlan() {
     this.router.navigate(['dashboard/plans']);
   }
+  
   profileSubmit() {
 
     const obj = {
@@ -93,19 +116,25 @@ export class EditprofileComponent implements OnInit {
       lastName: this.ngForm.value.lastName,
       phoneNumber: this.ngForm.value.phoneNumber,
       profileTitle: this.ngForm.value.profileTitle,
-      profileImage: this.ngForm.value.profileImage,
+      profileImage: this.fileName,
       dob: this.ngForm.value.dob,
       companyName: this.ngForm.value.companyName,
       stateName: this.ngForm.value.stateName,
       cityName: this.ngForm.value.cityName,
       zipcode: this.ngForm.value.zipcode,
-      planId: this.ngForm.value.planId,
+      planId: this.ngForm.value.planName,
+      description:this.ngForm.value.description,
+      facebook:this.ngForm.value.facebook,
+      twitter:this.ngForm.value.twitter,
+      linkedin:this.ngForm.value.linkedin,
       recruiterId: this.userId
     }
+    console.log("obj",obj);
     this.service.put(`recruiter/updateRecruiter`, obj).subscribe((res: any) => {
       console.log("update profile res", res);
       if (res.status === '7400') {
         this.message = 'success';
+       
       }
       else {
         this.message = 'warning';

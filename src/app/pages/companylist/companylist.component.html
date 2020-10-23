@@ -39,19 +39,20 @@
   <div class="container">
     <div class="content">
         <div class="container-fluid">
-    <div style="display: flex;justify-content: flex-end;">
-        <button class="btn btn-primary" (click)="addCompany()">
-            <i class="fas fa-plus-circle" aria-hidden="true"></i>&nbsp;New Company</button>
-      </div>
+   
   <div class="row">
     <div class="col-md-12">
      
     </div>
     <div class="col-md-8 ml-auto mr-auto">
-      
+      <div style="display: flex;justify-content: flex-end;">
+        <button class="btn btn-primary" (click)="addCompany()">
+            <i class="fas fa-plus-circle" aria-hidden="true"></i>&nbsp;Add Company</button>
+      </div>
+      <br>
       <div class="card card-plain">
         <div class="card-body">
-          <div class="table-responsive">
+          <div class="table-striped">
             <table class="table">
               <thead class="">
                 <th>
@@ -63,7 +64,7 @@
                 <th class="text-center">
                   Company Location
                 </th>
-                <th class="text-right">
+                <th class="text-center">
                   LinkedIn URL
                 </th>
                 <th class="text-right">
@@ -71,7 +72,7 @@
                 </th>
               </thead>
               <tbody>
-                <tr *ngFor="let company of companyData;index as i">
+                <tr *ngFor="let company of companyData | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
                   <td class="text-center">
                     {{company?.companyName}}
                   </td>

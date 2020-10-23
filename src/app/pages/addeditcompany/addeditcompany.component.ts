@@ -11,7 +11,7 @@ import { CommonService } from 'src/app/services/common.service';
 export class AddeditcompanyComponent implements OnInit {
   companyId: any;
   userId: string;
-  message:string;
+  message: string;
   public ngForm = new FormGroup({
     companyName: new FormControl('', [Validators.required]),
     companyUrl: new FormControl('', [Validators.required]),
@@ -20,57 +20,75 @@ export class AddeditcompanyComponent implements OnInit {
     companyIndustry: new FormControl('', [Validators.required]),
     companyLocations: new FormControl('', [Validators.required])
   })
-  constructor(public route:ActivatedRoute,public service:CommonService,public router:Router) {
+  companyData: any;
+  industryData: any;
+  constructor(public route: ActivatedRoute, public service: CommonService, public router: Router) {
     this.companyId = this.route.snapshot.params['id'];
-    console.log("company id",this.companyId);
+    console.log("company id", this.companyId);
   }
 
   ngOnInit(): void {
     this.userId = sessionStorage.getItem('userId');
     console.log("userId", this.userId);
-  }
-companySubmit(){
-  if (this.companyId === undefined) {
-    const obj = {
-      recruiterId: this.userId,
-      companyName: this.ngForm.value.companyName,
-      companyUrl: this.ngForm.value.companyUrl,
-      companyLinkedin: this.ngForm.value.companyLinkedin,
-      companyDescription: this.ngForm.value.companyDescription,
-      companyIndustry: this.ngForm.value.companyIndustry,
-      companyLocations: this.ngForm.value.companyLocations
-    }
-    console.log("data", obj);
-      this.service.post(`company/addCompany`, obj).subscribe((res: any) => {
-        console.log("post company res", res);
-        if(res.status==='7400'){
-          this.message='success';
-        }
-        else{
-          this.message='warning';
-        }
-      })
-  }
-  else{
-    const obj = {
-      recruiterId: this.userId,
-      companyName: this.ngForm.value.companyName,
-      companyUrl: this.ngForm.value.companyUrl,
-      companyLinkedin: this.ngForm.value.companyLinkedin,
-      companyDescription: this.ngForm.value.companyDescription,
-      companyIndustry: this.ngForm.value.companyIndustry,
-      companyLocations: this.ngForm.value.companyLocations
-    }
-    console.log("data", obj);
-    this.service.put(`company/editCompany/${this.companyId}`, obj).subscribe((res: any) => {
-      console.log("edit company res", res);
-      if(res.status==='7400'){
-        this.message='success';
-      }
-      else{
-        this.message='warning';
+    this.service.get(`company/viewAllIndustryTypes`).subscribe((resp: any) => {
+      console.log("view industry type res", resp);
+this.industryData = resp.value;
+      if (this.companyId !== undefined) {
+        this.service.get(`company/viewCompanyDetails/${this.companyId}`).subscribe((res: any) => {
+          console.log("view company res", res);
+          this.companyData = res.value;
+          this.ngForm.value.companyName = this.companyData.companyName;
+          this.ngForm.value.companyUrl = this.companyData.companyUrl;
+          this.ngForm.value.companyLinkedin = this.companyData.companyLinkedin;
+          this.ngForm.value.companyDescription = this.companyData.companyDescription;
+          this.ngForm.value.companyIndustry = this.companyData.companyIndustry;
+          this.ngForm.value.companyLocations = this.companyData.companyLocations;
+        })
       }
     })
   }
-}
+  companySubmit() {
+    if (this.companyId === undefined) {
+      const obj = {
+        recruiterId: this.userId,
+        companyName: this.ngForm.value.companyName,
+        companyUrl: this.ngForm.value.companyUrl,
+        companyLinkedin: this.ngForm.value.companyLinkedin,
+        companyDescription: this.ngForm.value.companyDescription,
+        companyIndustry: this.ngForm.value.companyIndustry,
+        companyLocations: this.ngForm.value.companyLocations
+      }
+      console.log("data", obj);
+      this.service.post(`company/addCompany`, obj).subscribe((res: any) => {
+        console.log("post company res", res);
+        if (res.status === '7400') {
+          this.message = 'success';
+        }
+        else {
+          this.message = 'warning';
+        }
+      })
+    }
+    else {
+      const obj = {
+        recruiterId: this.userId,
+        companyName: this.ngForm.value.companyName,
+        companyUrl: this.ngForm.value.companyUrl,
+        companyLinkedin: this.ngForm.value.companyLinkedin,
+        companyDescription: this.ngForm.value.companyDescription,
+        companyIndustry: this.ngForm.value.companyIndustry,
+        companyLocations: this.ngForm.value.companyLocations
+      }
+      console.log("data", obj);
+      this.service.put(`company/editCompany/${this.companyId}`, obj).subscribe((res: any) => {
+        console.log("edit company res", res);
+        if (res.status === '7400') {
+          this.message = 'success';
+        }
+        else {
+          this.message = 'warning';
+        }
+      })
+    }
+  }
 }

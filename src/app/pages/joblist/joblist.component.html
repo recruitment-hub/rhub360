@@ -42,6 +42,7 @@ justify-content: center">
     <option [ngValue]="6">6 items per page</option>
   </select>
 </div> -->
+
 <div class="content-wrapper">
   <div  class="section section-notifications">
     <div *ngIf="message ==='success'" class="alert alert-success" role="alert">
@@ -81,19 +82,20 @@ justify-content: center">
       </div>
   </div>
 <div class="container">
-  <div style="display: flex;justify-content: flex-end;">
-    <button class="btn btn-primary" (click)="addJob()">
-      <i class="fas fa-plus-circle" aria-hidden="true"></i>&nbsp;Post a Job</button>
-  </div>
+  
   <div class="row">
     <div class="col-md-12">
 
     </div>
     <div class="col-md-8 ml-auto mr-auto">
-
+      <div class="add">
+        <button class="btn btn-primary" (click)="addJob()">
+          <i class="fas fa-plus-circle" aria-hidden="true"></i>&nbsp;Post a Job</button>
+      </div>
+      <br>
       <div class="card card-plain">
         <div class="card-body">
-          <div class="table-responsive">
+          <div class="table-striped">
             <table class="table">
               <thead class="">
                 <th>
@@ -116,7 +118,7 @@ justify-content: center">
                 </th>
               </thead>
               <tbody>
-                <tr *ngFor="let job of jobData;index as i">
+                <tr *ngFor="let job of jobData | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
                   <td class="text-center">
                     {{job.noOfVacancies}}
                   </td>
@@ -180,7 +182,7 @@ justify-content: center">
                 </ul>
               </div> -->
 
-            <div class="d-flex justify-content-between p-2">
+              <div class="d-flex justify-content-between p-2">
               <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
                 aria-label="Default pagination" class="pagination-danger" (pageChange)="refreshCountries()">
               </ngb-pagination>
@@ -190,7 +192,11 @@ justify-content: center">
                 <option [ngValue]="4">4 items per page</option>
                 <option [ngValue]="6">6 items per page</option>
               </select>
-            </div>
+            </div> 
+            <!-- <ngb-pagination
+            [(page)]="page"
+            [pageSize]="pageSize"
+            [collectionSize]="jobData.length"></ngb-pagination> -->
           </div>
         </div>
       </div>

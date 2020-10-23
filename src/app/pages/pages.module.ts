@@ -14,9 +14,10 @@ import { UserloginComponent } from './userlogin/userlogin.component';
 import { CompanylistComponent } from './companylist/companylist.component';
 import { AddeditcompanyComponent } from './addeditcompany/addeditcompany.component';
 import { ViewcompanyComponent } from './viewcompany/viewcompany.component';
+//import { PaginationComponent } from './pagination/pagination.component';
 
 @NgModule({
-  declarations: [PlansComponent, AddjobComponent, UserloginComponent,EmailValidateComponent,JoblistComponent, ProfileComponent, ViewjobComponent, EditprofileComponent, CompanylistComponent, AddeditcompanyComponent, ViewcompanyComponent],
+  declarations: [PlansComponent, AddjobComponent, UserloginComponent, EmailValidateComponent, JoblistComponent, ProfileComponent, ViewjobComponent, EditprofileComponent, CompanylistComponent, AddeditcompanyComponent, ViewcompanyComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,
@@ -24,8 +25,8 @@ import { ViewcompanyComponent } from './viewcompany/viewcompany.component';
     ReactiveFormsModule,
     NgbModule
   ],
-  exports:[
-    PlansComponent,AddjobComponent,JoblistComponent,ProfileComponent,ViewjobComponent
+  exports: [
+    PlansComponent, AddjobComponent, JoblistComponent, ProfileComponent, ViewjobComponent, EmailValidateComponent, UserloginComponent, CompanylistComponent, AddeditcompanyComponent, ViewcompanyComponent, ProfileComponent, ViewjobComponent
   ]
 })
 export class PagesModule { }

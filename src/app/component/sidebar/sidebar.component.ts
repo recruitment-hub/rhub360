@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CommonService } from 'src/app/services/common.service';
 
 declare interface RouteInfo {
   path: string;
@@ -23,18 +24,28 @@ export const ROUTES: RouteInfo[] = [
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-
- // @Input() planId: string;
-  constructor(public router: Router) { }
+  userId: string;
+  profileData: any;
+  fileName: any;
+user=false;
+  // @Input() planId: string;
+  constructor(public router: Router, public service: CommonService) { }
   menuItems: any[];
   routePaths: any[];
   ngOnInit(): void {
     //console.log("planId", this.planId);
-
+    this.userId = sessionStorage.getItem('userId');
     this.menuItems = ROUTES.filter(menuItem => menuItem.isAdmin == 1);
-   /*  if (this.planId === '') {
-      this.router.navigate(['plans']);
-    } */
+    this.service.get(`recruiter/viewRecruiterDetails/${this.userId}`).subscribe((res: any) => {
+      console.log("profile res", res);
+      this.profileData = res.value;
+      this.user=true;
+      this.fileName = this.profileData.profileImage;
+    })
+
+    /*  if (this.planId === '') {
+       this.router.navigate(['plans']);
+     } */
     // debugger;
     /*  if(parseInt(sessionStorage.getItem("RoleId")) == 1){
         this.menuItems = ROUTES.filter(menuItem => menuItem.isAdmin == 1);

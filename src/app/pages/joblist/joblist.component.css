@@ -6,3 +6,7 @@ cursor:pointer;
     color:red;
     cursor:pointer;
 }
+.add{
+    display: flex;
+    justify-content: flex-end;
+}
