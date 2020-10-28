@@ -1,0 +1,123 @@
+<div class="content-wrapper">
+    <div  class="section section-notifications">
+      <div *ngIf="message ==='success'" class="alert alert-success" role="alert">
+        <div class="container">
+          <div class="alert-icon">
+            <i class="now-ui-icons ui-2_like"></i>
+          </div>
+          <strong>Well done!</strong> Successfully Deleted
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">
+              <i class="now-ui-icons ui-1_simple-remove"></i>
+            </span>
+          </button>
+        </div>
+      </div>
+      <div  *ngIf="message ==='warning'" class="alert alert-danger" role="alert">
+        <div class="container">
+          <div class="alert-icon">
+            <i class="now-ui-icons objects_support-17"></i>
+          </div>
+          <strong>Error!!</strong> Try Again
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">
+              <i class="now-ui-icons ui-1_simple-remove"></i>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+      <div class="content-header">
+          <div class="container-fluid">
+              <div class="row mb-2">
+                  <div class="col-sm-6">
+                      <h1 class="head-title"></h1>
+                  </div>
+              </div>
+          </div>
+      </div>
+    <div class="container">
+      <div class="content">
+          <div class="container-fluid">
+     
+    <div class="row">
+      <div class="col-md-12">
+       
+      </div>
+      <div class="col-md-8 ml-auto mr-auto">
+        <div style="display: flex;justify-content: flex-end;">
+          <button class="btn btn-primary" (click)="addUser()">
+              <i class="fas fa-plus-circle" aria-hidden="true"></i>&nbsp;Add User</button>
+        </div>
+        <br>
+        <div class="card card-plain">
+          <div class="card-body">
+            <div class="table-striped">
+              <table class="table">
+                <thead class="">
+                  <th>
+                    First Name
+                  </th>
+                  <th>
+                    Last Name
+                  </th>
+                  <th class="text-center">
+                    Role
+                  </th>
+                  <th class="text-center">
+                    Phone No
+                  </th>
+                  <th class="text-right">
+                    Actions
+                  </th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let user of userData | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                    <td class="text-center">
+                      {{user?.firstName}}
+                    </td>
+                    <td class="text-center">
+                      {{user?.lastName}}
+                    </td>
+                    <td class="text-center">
+                      {{user?.roleId}}
+                    </td>
+                    <td>
+                      {{user?.phoneNumber}}
+                    </td>
+              
+                    <td class="text-right">
+                     <!--  <button type="button" rel="tooltip" class="btn btn-success btn-icon btn-sm " (click)="viewCompany(company?._id)">
+                          <i class="fas fa-eye" aria-hidden="true"></i>
+                      </button> -->
+                      <button type="button" rel="tooltip" class="btn btn-info btn-icon btn-sm " title="Edit User" (click)="editUser(user?._id)">
+                          <i class="fas fa-pen" aria-hidden="true"></i>
+                      </button>
+                      <button type="button" rel="tooltip" class="btn btn-danger btn-icon btn-sm " title="Delete User" (click)="deleteUser(user?._id)">
+                          <i class="fas fa-trash" aria-hidden="true"></i>
+                      </button>
+                    </td>
+                  </tr>
+    
+                </tbody>
+              </table>
+              <div class="d-flex justify-content-between p-2">
+                  <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
+                    aria-label="Default pagination" class="pagination-danger" (pageChange)="refreshCountries()">
+                  </ngb-pagination>
+                  <select class="custom-select" style="width: auto" [(ngModel)]="pageSize"
+                    (ngModelChange)="refreshCountries()">
+                    <option [ngValue]="2">2 items per page</option>
+                    <option [ngValue]="4">4 items per page</option>
+                    <option [ngValue]="6">6 items per page</option>
+                  </select>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    

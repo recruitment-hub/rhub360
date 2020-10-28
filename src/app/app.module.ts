@@ -18,12 +18,16 @@ import { CommonService } from './services/common.service';
 import {DpDatePickerModule} from 'ng2-date-picker';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { LayoutAdminModule } from './layout-admin/layout-admin.module';
+import { ComponentAdminModule } from './component-admin/component-admin.module';
+import { DashboardAdminComponent } from './layout-admin/dashboard-admin/dashboard-admin.component';
+import { AuthAdminModule } from './auth-admin/auth-admin.module';
 //import { WavesModule, TableModule } from 'angular-bootstrap-md';
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-
+    DashboardAdminComponent
   ],
 
   imports: [
@@ -43,7 +47,9 @@ import { NgxSpinnerModule } from "ngx-spinner";
     DpDatePickerModule ,
     NgxPaginationModule,
     NgbModule,
-    
+    AuthAdminModule,
+    LayoutAdminModule,
+    ComponentAdminModule
   ],
   providers: [
     Location, { provide: LocationStrategy, useClass: HashLocationStrategy },CommonService

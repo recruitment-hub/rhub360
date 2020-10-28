@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { DashboardAdminComponent } from './layout-admin/dashboard-admin/dashboard-admin.component';
 import { DashboardComponent } from './layout/dashboard/dashboard.component';
 
 const routes: Routes = [
@@ -12,6 +13,15 @@ const routes: Routes = [
       loadChildren: './layout/layout.module#LayoutModule'
     }],
   },
+  {
+    path: 'admin',
+    component: DashboardAdminComponent,
+    children: [
+        {
+      path: '',
+      loadChildren: './layout-admin/layout-admin.module#LayoutAdminModule'
+    }],
+  }
 ];
 
 @NgModule({

@@ -1,55 +1,3 @@
-<!--<div>
-    <form [formGroup]="ngForm" (ngSubmit)="profileSubmit()">
-        <p>
-            <input type="text" class="form-control" formControlName="firstName" [value]=ngForm.value.firstName id="fname" placeholder="First Name"
-            name="firstName">
-        </p>
-        <p>
-            <input type="text" class="form-control" formControlName="lastName" [value]=ngForm.value.lastName id="lname" placeholder="Last Name"
-            name="lastName">
-        </p>
-        <p>
-            <input type="text" class="form-control" formControlName="phoneNumber" [value]=ngForm.value.phoneNumber id="phoneno" placeholder="Phone Number"
-            name="phoneNumber">
-        </p>
-        <p>
-            <input type="text" class="form-control" formControlName="profileTitle" [value]=ngForm.value.profileTitle id="title" placeholder="Title"
-            name="profileTitle">
-        </p>
-        <p>
-            <input type="file" accept="image/*" placeholder="Choose file" name="profileImage" [value]=ngForm.value.profileImage
-            (change)="onChangeImage($event)" formControlName="profileImage" required/>
-        </p>
-        
-        <p>
-            <input type="text" class="form-control" formControlName="dob" [value]=ngForm.value.dob id="dob" placeholder="Date of Birth"
-            name="dob">
-        </p>
-        <p>
-            <input type="text" class="form-control" formControlName="companyName"  id="cname" placeholder="Company Name"
-            name="companyName">
-        </p>
-        <p>
-            <input type="text" class="form-control" formControlName="cityName"  [value]=ngForm.value.cityName id="city" placeholder="City"
-            name="cityName">
-        </p>
-        <p>
-            <input type="text" class="form-control" formControlName="stateName" [value]=ngForm.value.stateName id="state" placeholder="State"
-            name="stateName">
-        </p>
-        <p>
-            <input type="text" class="form-control" formControlName="zipcode" [value]=ngForm.value.zipcode id="zipcode" placeholder="Zipcode"
-            name="zipcode">
-        </p>
-        <p>
-            <input type="text" class="form-control" formControlName="planId" [value]=ngForm.value.planId id="planId" placeholder="Plan ID"
-            name="zipcode">
-        </p>
-        <p>
-            <button type="submit">Save</button>
-        </p>
-    </form>
-</div> -->
 <div class="content-wrapper">
   <div class="section section-notifications">
     <div *ngIf="message ==='success'" class="alert alert-success" role="alert">
@@ -85,6 +33,12 @@
         <div class="col-sm-6">
           <h1 class="head-title">Edit Profile</h1>
         </div>
+        <div class="">
+         
+          <button type="button" class="btn btn-primary" style="float: right;" (click)="changePass()"><i
+              class="fas fa-key"></i>&nbsp;Change
+            Password</button>
+        </div>
       </div>
     </div>
   </div>
@@ -93,6 +47,7 @@
   <div class="content">
     <div class="container-fluid">
       <div class="row">
+        
         <div class="col-8 profile-edit">
 
           <div class="card">
@@ -138,8 +93,8 @@
                   </div>
                   <div class="col-4">
                     <label>DOB</label>
-                    <input type="text" class="form-control" formControlName="dob"
-                      placeholder="MM/dd/YYYY" [value]=ngForm.value.dob>
+                    <input type="text" class="form-control" formControlName="dob" placeholder="MM/dd/YYYY"
+                      [value]=ngForm.value.dob>
                   </div>
 
                   <div class="col-4">
@@ -148,56 +103,60 @@
                       [value]=ngForm.value.phoneNumber>
                   </div>
                   <div class="col-4">
-                    <label>Postal Code</label>
-                    <input type="text" class="form-control" placeholder="" formControlName="zipcode" [value]=ngForm.value.zipcode>
+                    <label>Zip Code</label>
+                    <input type="text" class="form-control" placeholder="" formControlName="zipcode"
+                      [value]=ngForm.value.zipcode>
                   </div>
                   <div class="col-4">
                     <label>Plan Name</label>
-                   <!--  <input type="text" class="form-control" formControlName="planId" [value]=ngForm.value.planId
-                      placeholder="Plan ID"> -->
-                      <select class="form-control" formControlName="planName"
-                      placeholder="Select Plan Name" [value]=ngForm?.value.planName data-size="7"
-                      data-style="btn btn-primary btn-round btn-block" title="Select Plan">
+                     <input type="text" class="form-control" formControlName="planName" [value]=ngForm?.value.planName
+                      placeholder=""> 
+                   <!--  <select class="form-control" formControlName="planName" placeholder="Select Plan Name"
+                      [value]=ngForm?.value.planName data-size="7" data-style="btn btn-primary btn-round btn-block"
+                      title="Select Plan">
                       <option *ngFor="let plan of planData" [value]="plan?._id">
-                          {{plan?.planName}}</option>
-                  </select>
+                        {{plan?.planName}}</option>
+                    </select> -->
                   </div>
-                 <!--  <div class="col-4">
+                  <!--  <div class="col-4">
                     <button type="button" class="btn btn-primary" style="float: right;" (click)="changePlan()">Change
                       Plan</button>
                   </div> -->
                   <div class="col-4">
                     <label>Facebook URL</label>
-                    <input type="text" class="form-control" placeholder="" formControlName="facebook" [value]=ngForm.value.facebook>
+                    <input type="text" class="form-control" placeholder="" formControlName="facebook"
+                      [value]=ngForm.value.facebook>
                   </div>
                   <div class="col-4">
                     <label>Twitter URL</label>
-                    <input type="text" class="form-control" placeholder="" formControlName="twitter" [value]=ngForm.value.twitter>
+                    <input type="text" class="form-control" placeholder="" formControlName="twitter"
+                      [value]=ngForm.value.twitter>
                   </div>
                   <div class="col-4">
                     <label>LinkedIn URL</label>
-                    <input type="text" class="form-control" placeholder="" formControlName="linkedin" [value]=ngForm.value.linkedin>
+                    <input type="text" class="form-control" placeholder="" formControlName="linkedin"
+                      [value]=ngForm.value.linkedin>
                   </div>
                   <div class="col-12">
                     <label>Description</label>
-                    <textarea class="form-control" placeholder="" formControlName="description" [value]=ngForm.value.description></textarea>
+                    <textarea class="form-control" placeholder="" formControlName="description"
+                      [value]=ngForm.value.description></textarea>
                   </div>
-                  
-                  <div class="col-8">
+
+
+                  <div class="col-12">
                     <br>
-                    <button type="button" class="btn btn-primary" style="float: right;" (click)="changePass()"><i class="fas fa-key"></i>&nbsp;Change
-                      Password</button>
-                  </div>
-                  <div class="col-4">
-                    <br>
-                    <button type="submit" class="btn btn-primary" style="float: right;"><i class="fas fa-save"></i>&nbsp;Save</button>
+                    <button type="submit" class="btn btn-primary" style="float: right;"><i
+                        class="fas fa-save"></i>&nbsp;Save</button>
                   </div>
                 </div>
               </form>
             </div>
           </div>
+          
           <div *ngIf="change" class="card">
-            <div class="card-body">
+
+            <div  class="card-body">
               <form [formGroup]="proForm" (ngSubmit)="changePassword()">
                 <div class="row">
                   <div class="col-3">
@@ -210,8 +169,7 @@
                   </div>
                   <div class="col-3">
                     <label>Confirm New Password</label>
-                    <input type="password" class="form-control" placeholder=""
-                      formControlName="cpass">
+                    <input type="password" class="form-control" placeholder="" formControlName="cpass">
                   </div>
                   <div class="col-3">
                     <button type="submit" class="btn btn-primary" style="position: relative;
@@ -239,7 +197,8 @@
                 </div>
                 <div *ngIf="imgshow" class="widget-user-image">
                   <!--    <img class="img-circle" src="../../../assets/Profile Image.png" alt="User Avatar"> -->
-                  <img class="img-circle" src="https://recruiter-gallery.s3.us-east-2.amazonaws.com/{{fileName}}" alt="User Avatar">
+                  <img class="img-circle" src="https://recruiter-gallery.s3.us-east-2.amazonaws.com/{{fileName}}"
+                    alt="User Avatar">
                 </div>
                 <div class="box-footer">
                   <div class="row">

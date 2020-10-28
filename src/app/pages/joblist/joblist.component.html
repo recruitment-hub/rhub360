@@ -88,7 +88,7 @@ justify-content: center">
 
     </div>
     <div class="col-md-8 ml-auto mr-auto">
-      <div class="add">
+      <div *ngIf="userId!==null" class="add">
         <button class="btn btn-primary" (click)="addJob()">
           <i class="fas fa-plus-circle" aria-hidden="true"></i>&nbsp;Post a Job</button>
       </div>
@@ -135,16 +135,20 @@ justify-content: center">
                     {{job.maxSalaryRange}}
                   </td>
                   <td class="text-right">
-                    <button type="button" rel="tooltip" class="btn btn-success btn-icon btn-sm "
+                    <button type="button" rel="tooltip" title="View Job" class="btn btn-success btn-icon btn-sm "
                       (click)="viewJob(job?._id)">
                       <i class="fas fa-eye" aria-hidden="true"></i>
                     </button>
-                    <button type="button" rel="tooltip" class="btn btn-info btn-icon btn-sm "
-                      (click)="editJob(job?._id)">
+                    <button type="button" *ngIf="userId===null" rel="tooltip" title="Assign Job" class="btn btn-info btn-icon btn-sm "
+                    (click)="assignJob(job?._id)">
+                    <i class="fas fa-tasks" aria-hidden="true"></i>
+                  </button>
+                    <button type="button" rel="tooltip" class="btn btn-info btn-icon btn-sm " title="Edit Job"
+                    *ngIf="userId!==null" (click)="editJob(job?._id)">
                       <i class="fas fa-pen" aria-hidden="true"></i>
                     </button>
-                    <button type="button" rel="tooltip" class="btn btn-danger btn-icon btn-sm "
-                      (click)="deleteJob(job?._id)">
+                    <button type="button" rel="tooltip" class="btn btn-danger btn-icon btn-sm " title="Delete Job"
+                    *ngIf="userId!==null" (click)="deleteJob(job?._id)">
                       <i class="fas fa-trash" aria-hidden="true"></i>
                     </button>
                   </td>

@@ -1,0 +1,111 @@
+<!-- <div>
+    <p>Login</p>
+    <form [formGroup]="ngForm" (ngSubmit)="loginSubmit();clicked=true">
+        <p>
+            <label>Email ID</label>&nbsp;&nbsp;
+            <input type="email" name="email" formControlName="email" class="email" required>
+        </p>
+        <p>
+            <label>Password</label>&nbsp;&nbsp;
+            <input type="password" name="pwd" formControlName="pwd" class="pwd" required>
+        </p>
+        <p>
+            <button type="submit" [disabled]="clicked">Submit</button>
+        </p>
+    </form>
+</div>
+ -->
+
+ <div class="home login-bg">
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#"><img src="../../../assets/logo.png"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto custom-menu">
+            <li class="nav-item active">
+              <a class="nav-link" href="#"><span>Service</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="#"><span>Data</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="#"><span>Leads</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="#"><span>Package</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="#"><span>Contact</span></a>
+            </li>
+            <!-- <li class="nav-item active">
+              <a class="nav-link" (click)="registerEnter()" style="cursor: pointer;"><span>Register</span></a>
+            </li> -->
+          </ul>
+            <button class="btn btn-primary  my-2 my-sm-0 login-btn" (click)="loginEnter()">LOGIN</button>
+        </div>
+      </nav>
+    </div>
+    <div  class="section section-notifications">
+      <div *ngIf="message ==='success'" class="alert alert-success" role="alert">
+        <div class="container">
+          <div class="alert-icon">
+            <i class="now-ui-icons ui-2_like"></i>
+          </div>
+          <strong>Well Done!!</strong>Successfully LoggedIn
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">
+              <i class="now-ui-icons ui-1_simple-remove"></i>
+            </span>
+          </button>
+        </div>
+      </div>
+      <div  *ngIf="message ==='warning'" class="alert alert-danger" role="alert">
+        <div class="container">
+          <div class="alert-icon">
+            <i class="now-ui-icons objects_support-17"></i>
+          </div>
+          <strong>Warning!!</strong>Email or Password Incorrect. Try again
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">
+              <i class="now-ui-icons ui-1_simple-remove"></i>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="main-content">
+        <div class="container">
+            <div class="row height-100"></div>
+            <div class="row">
+                <div class="col">
+                </div>
+                <div class="col">
+                    <h2 class="text-center theme-color login-head">LOGIN</h2>
+                    <form class="login-form" [formGroup]="ngForm" (ngSubmit)="loginSubmit();clicked=true">
+                        <div class="form-group">
+                            <input type="email" class="form-control" formControlName="email" id="email" placeholder="Email" name="email">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="pwd" formControlName="pwd" placeholder="Password" name="pwd">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block"><span>Get Started</span></button>
+                        <div class="form-group form-check login-bottom-menu">
+                            <div class="row">
+                                <!-- <div class="col">
+                                    <a class="link" (click)="craeteAccount()" style="cursor: pointer;color:steelblue;">CREATE ACCOUNT</a>
+                                </div> -->
+                                <div class="col">
+                                    <a href="#" style="float: right;">NEED HELP?</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

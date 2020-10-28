@@ -56,7 +56,8 @@ export class EditprofileComponent implements OnInit {
       this.fileName=this.profileData.profileImage;
       this.ngForm.value.firstName = this.profileData.firstName;
       this.ngForm.value.lastName = this.profileData.lastName;
-      this.ngForm.value.phoneNumber = this.profileData.phoneNumber;
+      this.ngForm.value.phoneNumber= this.formatPhoneNumber(this.profileData.phoneNumber);
+     // this.ngForm.value.phoneNumber = this.profileData.phoneNumber;
       this.ngForm.value.profileTitle = this.profileData.profileTitle;
       this.ngForm.value.profileImage = this.profileData.profileImage;
       this.ngForm.value.dob = this.profileData.dob;
@@ -71,6 +72,16 @@ export class EditprofileComponent implements OnInit {
       this.ngForm.value.linkedin = this.profileData.linkedin;
       
     })
+  }
+  
+   formatPhoneNumber(phoneNumberString) {
+    var cleaned = ('' + phoneNumberString).replace(/\D/g, '')
+    var match = cleaned.match(/^(1|)?(\d{3})(\d{3})(\d{4})$/)
+    if (match) {
+      var intlCode = (match[1] ? '+1 ' : '')
+      return [intlCode, '(', match[2], ') ', match[3], '-', match[4]].join('')
+    }
+    return null
   }
   onChangeImage(event) {
     //alert("hbfaj")

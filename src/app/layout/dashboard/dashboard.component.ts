@@ -13,11 +13,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = JSON.parse(sessionStorage.getItem('userData'));
-    if(this.user ==''){
-      this.planId = '';
-    }
-    console.log("user",this.user,this.user.planId);
-    this.planId = this.user.planId;
+   
   }
 
 }

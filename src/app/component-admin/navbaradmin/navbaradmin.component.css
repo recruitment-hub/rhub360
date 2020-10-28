@@ -1,0 +1,12 @@
+.user{
+    position: relative;
+    bottom: 5px;
+    left: 10px;
+    padding: -2px;
+    float: right;
+}
+.searchbar{
+    position: relative;
+    padding: 3px;
+    border:none;
+}

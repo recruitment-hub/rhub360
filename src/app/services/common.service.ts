@@ -46,5 +46,7 @@ export class CommonService {
   emitChange() {
     this.emitChangeSource.next();
   }
-
+  getEnrichmentData(linkedin) {
+    return this.http.get(`https://api.peopledatalabs.com/v5/person/enrich?pretty=true&api_key=48a7d6de5276f50b8e4e4e709c7d9cb2d208e6ab75fbbbb3cecc57297ffb6357&profile=www.linkedin.com/in/seanthorne`)
+  }
 }
