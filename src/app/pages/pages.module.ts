@@ -21,10 +21,11 @@ import { AdminloginComponent } from './adminlogin/adminlogin.component';
 import { AdminvalidateComponent } from './adminvalidate/adminvalidate.component';
 import { EdituserComponent } from './edituser/edituser.component';
 import { JobassignedListComponent } from './jobassigned-list/jobassigned-list.component';
+import { JobsearchComponent } from './jobsearch/jobsearch.component';
 //import { PaginationComponent } from './pagination/pagination.component';
 
 @NgModule({
-  declarations: [PlansComponent, AddjobComponent, UserloginComponent, EmailValidateComponent, JoblistComponent, ProfileComponent, ViewjobComponent, EditprofileComponent, CompanylistComponent, AddeditcompanyComponent, ViewcompanyComponent, AddedituserComponent, UserlistComponent, JobassignedComponent, AdminloginComponent, AdminvalidateComponent, EdituserComponent, JobassignedListComponent],
+  declarations: [PlansComponent, AddjobComponent, UserloginComponent, EmailValidateComponent, JoblistComponent, ProfileComponent, ViewjobComponent, EditprofileComponent, CompanylistComponent, AddeditcompanyComponent, ViewcompanyComponent, AddedituserComponent, UserlistComponent, JobassignedComponent, AdminloginComponent, AdminvalidateComponent, EdituserComponent, JobassignedListComponent, JobsearchComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,

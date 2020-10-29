@@ -22,6 +22,7 @@ export class EditprofileComponent implements OnInit {
     companyName: new FormControl('', [Validators.required]),
     stateName: new FormControl('', [Validators.required]),
     cityName: new FormControl('', [Validators.required]),
+    countryName: new FormControl('', [Validators.required]),
     zipcode: new FormControl('', [Validators.required]),
     planName: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
@@ -70,7 +71,7 @@ export class EditprofileComponent implements OnInit {
       this.ngForm.value.facebook = this.profileData.facebook;
       this.ngForm.value.twitter = this.profileData.twitter;
       this.ngForm.value.linkedin = this.profileData.linkedin;
-      
+      this.ngForm.value.countryName = this.profileData.countryName;
     })
   }
   
@@ -90,8 +91,8 @@ export class EditprofileComponent implements OnInit {
       console.log("upload profile res", res);
       this.ngForm.value.profileImage = res.fileName;
       this.fileName=res.fileName;
-      this.service.put(`recruiter/changeAvatar/${this.userId}/${res.fileName}`,this.userId).subscribe((res:any)=>{
-        console.log("avatar change res",res);
+      this.service.put(`recruiter/changeAvatar/${this.userId}/${res.fileName}`,this.userId).subscribe((resp:any)=>{
+        console.log("avatar change res",resp);
       })
     })
   }
@@ -121,6 +122,11 @@ export class EditprofileComponent implements OnInit {
   }
   
   profileSubmit() {
+    this.planData.forEach(plan=>{
+      if(this.ngForm.value.planName === plan.planName){
+        this.ngForm.value.planName = plan._id;
+      }
+    })
 
     const obj = {
       firstName: this.ngForm.value.firstName,
@@ -132,6 +138,7 @@ export class EditprofileComponent implements OnInit {
       companyName: this.ngForm.value.companyName,
       stateName: this.ngForm.value.stateName,
       cityName: this.ngForm.value.cityName,
+      countryName:this.ngForm.value.countryName,
       zipcode: this.ngForm.value.zipcode,
       planId: this.ngForm.value.planName,
       description:this.ngForm.value.description,

@@ -33,12 +33,7 @@
         <div class="col-sm-6">
           <h1 class="head-title">Edit Profile</h1>
         </div>
-        <div class="">
-         
-          <button type="button" class="btn btn-primary" style="float: right;" (click)="changePass()"><i
-              class="fas fa-key"></i>&nbsp;Change
-            Password</button>
-        </div>
+
       </div>
     </div>
   </div>
@@ -47,7 +42,7 @@
   <div class="content">
     <div class="container-fluid">
       <div class="row">
-        
+
         <div class="col-8 profile-edit">
 
           <div class="card">
@@ -57,61 +52,65 @@
                   <div class="col-6">
                     <label>First Name</label>
                     <input type="text" class="form-control" placeholder="" formControlName="firstName"
-                      [value]=ngForm.value.firstName>
+                      [value]=ngForm?.value.firstName>
                   </div>
                   <div class="col-6">
                     <label>Last Name</label>
                     <input type="text" class="form-control" placeholder="" formControlName="lastName"
-                      [value]=ngForm.value.lastName>
+                      [value]=ngForm?.value.lastName>
+                  </div>
+
+                  <div class="col-4">
+                    <label>State</label>
+                    <input type="text" class="form-control" placeholder="" formControlName="stateName"
+                      [value]=ngForm?.value.stateName>
                   </div>
                   <div class="col-4">
+                    <label>City</label>
+                    <input type="text" class="form-control" placeholder="" formControlName="cityName"
+                      [value]=ngForm?.value.cityName>
+                  </div>
+                  <div class="col-4">
+                    <label>Country</label>
+                    <input type="text" class="form-control" placeholder="" formControlName="countryName"
+                      [value]=ngForm?.value.countryName>
+                  </div>
+
+                  <div class="col-4">
+                    <label>Company</label>
+                    <input type="text" class="form-control" formControlName="companyName" placeholder=""
+                      [value]=ngForm?.value.companyName>
+                  </div>
+                  <div class="col-4">
+                    <label>Job Role</label>
+                    <input type="text" class="form-control" formControlName="profileTitle"
+                      [value]=ngForm?.value.profileTitle placeholder="">
+                  </div>
+                  <div class="col-4">
+                    <label>DOB</label>
+                    <input type="text" class="form-control" formControlName="dob" placeholder="MM/dd/YYYY"
+                      [value]=ngForm?.value.dob>
+                  </div>
+                  <div class="col-12">
                     <label>Profile</label>
                     <input class="form-control" type="file" accept="image/*" placeholder="Choose file"
                       name="profileImage" (change)="onChangeImage($event)" formControlName="profileImage">
                   </div>
                   <div class="col-4">
-                    <label>State</label>
-                    <input type="text" class="form-control" placeholder="" formControlName="stateName"
-                      [value]=ngForm.value.stateName>
-                  </div>
-                  <div class="col-4">
-                    <label>City</label>
-                    <input type="text" class="form-control" placeholder="" formControlName="cityName"
-                      [value]=ngForm.value.cityName>
-                  </div>
-
-
-                  <div class="col-4">
-                    <label>Company</label>
-                    <input type="text" class="form-control" formControlName="companyName" placeholder=""
-                      [value]=ngForm.value.companyName>
-                  </div>
-                  <div class="col-4">
-                    <label>Job Role</label>
-                    <input type="text" class="form-control" formControlName="profileTitle"
-                      [value]=ngForm.value.profileTitle placeholder="">
-                  </div>
-                  <div class="col-4">
-                    <label>DOB</label>
-                    <input type="text" class="form-control" formControlName="dob" placeholder="MM/dd/YYYY"
-                      [value]=ngForm.value.dob>
-                  </div>
-
-                  <div class="col-4">
                     <label>Phone Number</label>
                     <input type="text" class="form-control" placeholder="" formControlName="phoneNumber"
-                      [value]=ngForm.value.phoneNumber>
+                      [value]=ngForm?.value.phoneNumber>
                   </div>
                   <div class="col-4">
                     <label>Zip Code</label>
                     <input type="text" class="form-control" placeholder="" formControlName="zipcode"
-                      [value]=ngForm.value.zipcode>
+                      [value]=ngForm?.value.zipcode>
                   </div>
                   <div class="col-4">
                     <label>Plan Name</label>
-                     <input type="text" class="form-control" formControlName="planName" [value]=ngForm?.value.planName
-                      placeholder=""> 
-                   <!--  <select class="form-control" formControlName="planName" placeholder="Select Plan Name"
+                    <input type="text" class="form-control" formControlName="planName" [value]=ngForm?.value.planName
+                      placeholder="">
+                    <!--  <select class="form-control" formControlName="planName" placeholder="Select Plan Name"
                       [value]=ngForm?.value.planName data-size="7" data-style="btn btn-primary btn-round btn-block"
                       title="Select Plan">
                       <option *ngFor="let plan of planData" [value]="plan?._id">
@@ -125,38 +124,48 @@
                   <div class="col-4">
                     <label>Facebook URL</label>
                     <input type="text" class="form-control" placeholder="" formControlName="facebook"
-                      [value]=ngForm.value.facebook>
+                      [value]=ngForm?.value.facebook>
                   </div>
                   <div class="col-4">
                     <label>Twitter URL</label>
                     <input type="text" class="form-control" placeholder="" formControlName="twitter"
-                      [value]=ngForm.value.twitter>
+                      [value]=ngForm?.value.twitter>
                   </div>
                   <div class="col-4">
                     <label>LinkedIn URL</label>
                     <input type="text" class="form-control" placeholder="" formControlName="linkedin"
-                      [value]=ngForm.value.linkedin>
+                      [value]=ngForm?.value.linkedin>
                   </div>
-                  <div class="col-12">
+                  <div class="col-8">
                     <label>Description</label>
                     <textarea class="form-control" placeholder="" formControlName="description"
-                      [value]=ngForm.value.description></textarea>
+                      [value]=ngForm?.value.description></textarea>
                   </div>
 
 
-                  <div class="col-12">
+                  <div class="col-4">
                     <br>
-                    <button type="submit" class="btn btn-primary" style="float: right;"><i
-                        class="fas fa-save"></i>&nbsp;Save</button>
+                    <div class="row">
+                      <div class="col-12" style="display: flex;justify-content: center;">
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i>&nbsp;Save</button>
+                      </div>
+                      <br>
+                      <div class="col-12" style="display: flex;justify-content: center;">
+                        <button type="button" class="btn btn-link" (click)="changePass()"><i
+                            class="fas fa-key"></i>&nbsp;Change
+                          Password</button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </form>
             </div>
           </div>
+
           
           <div *ngIf="change" class="card">
 
-            <div  class="card-body">
+            <div class="card-body">
               <form [formGroup]="proForm" (ngSubmit)="changePassword()">
                 <div class="row">
                   <div class="col-3">

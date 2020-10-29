@@ -32,7 +32,7 @@ export class AddeditcompanyComponent implements OnInit {
     console.log("userId", this.userId);
     this.service.get(`company/viewAllIndustryTypes`).subscribe((resp: any) => {
       console.log("view industry type res", resp);
-this.industryData = resp.value;
+      this.industryData = resp.value;
       if (this.companyId !== undefined) {
         this.service.get(`company/viewCompanyDetails/${this.companyId}`).subscribe((res: any) => {
           console.log("view company res", res);
@@ -48,47 +48,55 @@ this.industryData = resp.value;
     })
   }
   companySubmit() {
-    if (this.companyId === undefined) {
-      const obj = {
-        recruiterId: this.userId,
-        companyName: this.ngForm.value.companyName,
-        companyUrl: this.ngForm.value.companyUrl,
-        companyLinkedin: this.ngForm.value.companyLinkedin,
-        companyDescription: this.ngForm.value.companyDescription,
-        companyIndustry: this.ngForm.value.companyIndustry,
-        companyLocations: this.ngForm.value.companyLocations
-      }
-      console.log("data", obj);
-      this.service.post(`company/addCompany`, obj).subscribe((res: any) => {
-        console.log("post company res", res);
-        if (res.status === '7400') {
-          this.message = 'success';
-        }
-        else {
-          this.message = 'warning';
-        }
-      })
+    this.message = '';
+    if (this.ngForm.value.companyDescription === '' || this.ngForm.value.companyIndustry === '' ||
+      this.ngForm.value.companyLinkedin === '' || this.ngForm.value.companyLocations === '' ||
+      this.ngForm.value.companyName === '' || this.ngForm.value.companyUrl === '') {
+      this.message = 'warning';
     }
     else {
-      const obj = {
-        recruiterId: this.userId,
-        companyName: this.ngForm.value.companyName,
-        companyUrl: this.ngForm.value.companyUrl,
-        companyLinkedin: this.ngForm.value.companyLinkedin,
-        companyDescription: this.ngForm.value.companyDescription,
-        companyIndustry: this.ngForm.value.companyIndustry,
-        companyLocations: this.ngForm.value.companyLocations
+      if (this.companyId === undefined) {
+        const obj = {
+          recruiterId: this.userId,
+          companyName: this.ngForm.value.companyName,
+          companyUrl: this.ngForm.value.companyUrl,
+          companyLinkedin: this.ngForm.value.companyLinkedin,
+          companyDescription: this.ngForm.value.companyDescription,
+          companyIndustry: this.ngForm.value.companyIndustry,
+          companyLocations: this.ngForm.value.companyLocations
+        }
+        console.log("data", obj);
+        this.service.post(`company/addCompany`, obj).subscribe((res: any) => {
+          console.log("post company res", res);
+          if (res.status === '7400') {
+            this.message = 'success';
+          }
+          else {
+            this.message = 'warning';
+          }
+        })
       }
-      console.log("data", obj);
-      this.service.put(`company/editCompany/${this.companyId}`, obj).subscribe((res: any) => {
-        console.log("edit company res", res);
-        if (res.status === '7400') {
-          this.message = 'success';
+      else {
+        const obj = {
+          recruiterId: this.userId,
+          companyName: this.ngForm.value.companyName,
+          companyUrl: this.ngForm.value.companyUrl,
+          companyLinkedin: this.ngForm.value.companyLinkedin,
+          companyDescription: this.ngForm.value.companyDescription,
+          companyIndustry: this.ngForm.value.companyIndustry,
+          companyLocations: this.ngForm.value.companyLocations
         }
-        else {
-          this.message = 'warning';
-        }
-      })
+        console.log("data", obj);
+        this.service.put(`company/editCompany/${this.companyId}`, obj).subscribe((res: any) => {
+          console.log("edit company res", res);
+          if (res.status === '7400') {
+            this.message = 'success';
+          }
+          else {
+            this.message = 'warning';
+          }
+        })
+      }
     }
   }
 }

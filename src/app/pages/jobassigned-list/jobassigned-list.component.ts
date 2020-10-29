@@ -19,21 +19,23 @@ export class JobassignedListComponent implements OnInit {
   total = 0;
   message: string;
   jobs: Job[];
+  adminId: string;
   constructor(public service: CommonService, public router: Router) {
+    this.adminId = sessionStorage.getItem('adminId');
     this.refreshCountries();
   }
   jobData: any;
   refreshCountries() {
 
     console.log("collection size page pagesize", this.collectionSize, this.page, this.pageSize)
-    this.jobs = this.jobData
+    /* this.jobs = this.jobData
       .map((job, i) => ({ id: i + 1, ...job }))
-      .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
+      .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize); */
   }
   ngOnInit(): void {
-    this.service.get(``).subscribe((res: any) => {
+    this.service.get(`job/jobAssignedByMe/${this.adminId}`).subscribe((res: any) => {
       console.log('job assign list res', res);
-      this.jobData = res.response;
+      this.jobData = res.value;
     })
   }
   viewAssignedJob(id) {

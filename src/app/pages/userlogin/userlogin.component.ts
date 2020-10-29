@@ -41,12 +41,7 @@ export class UserloginComponent implements OnInit {
     this.httpService.post('recruiter/recruiterLogin', obj).subscribe((res: any) => {
       console.log("res login", res);
       if(res.status==="7400"){
-        this.spinner.show();
- 
-        setTimeout(() => {
-          
-          this.spinner.hide();
-        }, 5000);
+        
         this.message='success'
         var user = res.value;
         this.userId = user._id;

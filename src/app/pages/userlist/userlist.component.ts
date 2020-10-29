@@ -24,6 +24,7 @@ export class UserlistComponent implements OnInit {
   collectionSize = 0;
   users: User[];
   userData: any;
+  adminId: string;
   constructor(public service: CommonService, public router: Router) {
     this.refreshCountries();
 
@@ -31,6 +32,7 @@ export class UserlistComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = sessionStorage.getItem('userId');
+    this.adminId = sessionStorage.getItem('adminId');
    //this.userData = JSON.parse(sessionStorage.getItem('userData'));
    this.service.get(`admin/getAdminUsers`).subscribe((res:any)=>{
      console.log("user list res",res);
@@ -61,11 +63,19 @@ export class UserlistComponent implements OnInit {
     this.router.navigate(['admin/addedituser', id]);
   }
   deleteUser(id) {
-    this.service.delete(``).subscribe((res:any)=>{
+    console.log("id",id);
+    this.service.delete(`admin/deleteAdmin/${id}`).subscribe((res:any)=>{
       console.log('delete user res',res);
-      this.service.get(``).subscribe((resp:any)=>{
+      if (res.status === "7400") {
+        this.message = 'success';
+      }
+      else {
+        this.message = "warning";
+      }
+      this.service.get(`admin/getAdminUsers`).subscribe((resp:any)=>{
         console.log("user list res",resp);
         this.userData = resp.response;
+
       })
     })
   }

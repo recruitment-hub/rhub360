@@ -43,6 +43,7 @@ export class AdminvalidateComponent implements OnInit {
         if (res.status === "7400") {
           this.roleId = res.response.roleId;
           console.log("roleid", this.roleId);
+          this.message='success';
           sessionStorage.setItem('roleId', this.roleId);
           if (res.response.firstName === null) {
             this.router.navigate(['admin/edituser']);
@@ -52,7 +53,7 @@ export class AdminvalidateComponent implements OnInit {
         }
         else {
           //this._success.next("Email already Registered.")
-          this.message = 'success'
+          this.message = 'warning';
         }
       })
     }

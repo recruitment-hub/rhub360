@@ -20,6 +20,7 @@ export class PlansComponent implements OnInit {
     })
   }
 planOne(id){
+  this.message='';
 console.log("Silver Plan");
 this.service.put(`recruiter/updatePaymentPlan/${this.userId}/${id}`,id).subscribe((res:any)=>{
   console.log("plan post res",res);
@@ -32,6 +33,7 @@ else{
 })
 }
 planTwo(id){
+  this.message='';
   console.log("Gold Plan");
   this.service.put(`recruiter/updatePaymentPlan/${this.userId}/${id}`,id).subscribe((res:any)=>{
     console.log("plan post res",res);
@@ -44,6 +46,7 @@ planTwo(id){
   })
 }
 planThree(id){
+  this.message='';
   console.log("Diamond Plan");
   this.service.put(`recruiter/updatePaymentPlan/${this.userId}/${id}`,id).subscribe((res:any)=>{
     console.log("plan post res",res);

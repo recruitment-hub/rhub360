@@ -11,14 +11,14 @@ import { CommonService } from 'src/app/services/common.service';
 export class AddedituserComponent implements OnInit {
 
   public ngForm = new FormGroup({
-    
+
     profileTitle: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required])
   })
   userData: any;
   roleData: any;
   roleId: any;
-  message:string;
+  message: string;
   constructor(public service: CommonService, public route: ActivatedRoute) {
     this.roleId = this.route.snapshot.params['id'];
   }
@@ -52,16 +52,21 @@ export class AddedituserComponent implements OnInit {
       roleId: this.ngForm.value.profileTitle,
       email: this.ngForm.value.email
     }
-    var objverify ={
+    var objverify = {
       email: this.ngForm.value.email,
       roleId: this.ngForm.value.profileTitle,
       //verifiedLink: `http://localhost:4200/#/adminvalidate?email=${this.ngForm.value.email}`
       verifiedLink: `http://app.recruitment-hub.s3-website.us-east-2.amazonaws.com/#/adminvalidate?email=${this.ngForm.value.email}`,
     }
     console.log("obj", objverify);
-    this.service.post(`admin/newAdmin`,objverify).subscribe((resp:any)=>{
-      console.log("verify res",resp);
-   
+    this.service.post(`admin/newAdmin`, objverify).subscribe((resp: any) => {
+      console.log("verify res", resp);
+      if (resp.status === "7400") {
+        this.message = 'success';
+      }
+      else {
+        this.message = "warning";
+      }
     })
   }
 }

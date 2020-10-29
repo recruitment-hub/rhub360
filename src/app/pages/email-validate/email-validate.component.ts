@@ -53,6 +53,7 @@ export class EmailValidateComponent implements OnInit {
       console.log("res new recruit", res);
       if(res.status === "7400"){
         this.userId = res.userId;
+        this.message='success';
         sessionStorage.setItem('userId',this.userId);
         this.httpService.get(`recruiter/viewRecruiterDetails/${this.userId}`).subscribe((resp:any)=>{
           console.log("profile res",resp);
@@ -67,7 +68,7 @@ export class EmailValidateComponent implements OnInit {
       }
       else{
         //this._success.next("Email already Registered.")
-        this.message='success'
+        this.message='warning';
       }
     })
   }

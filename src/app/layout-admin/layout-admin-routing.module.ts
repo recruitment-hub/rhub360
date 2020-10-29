@@ -8,6 +8,7 @@ import { EdituserComponent } from '../pages/edituser/edituser.component';
 import { JobassignedListComponent } from '../pages/jobassigned-list/jobassigned-list.component';
 import { JobassignedComponent } from '../pages/jobassigned/jobassigned.component';
 import { JoblistComponent } from '../pages/joblist/joblist.component';
+import { JobsearchComponent } from '../pages/jobsearch/jobsearch.component';
 import { UserlistComponent } from '../pages/userlist/userlist.component';
 import { ViewjobComponent } from '../pages/viewjob/viewjob.component';
 
@@ -49,6 +50,9 @@ const routes: Routes = [
   },
   {
     path:'assignedjoblist',component:JobassignedListComponent
+  },
+  {
+    path:'jobsearch',component:JobsearchComponent
   }
 ];
 

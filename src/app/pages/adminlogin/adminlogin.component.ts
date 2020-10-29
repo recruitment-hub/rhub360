@@ -13,6 +13,7 @@ export class AdminloginComponent implements OnInit {
   roleId: any;
 clicked=false;
   role: any;
+  adminId: any;
   constructor(public service: CommonService, public router: Router) { }
   public ngForm = new FormGroup({
     email: new FormControl('', [Validators.required]),
@@ -37,10 +38,16 @@ clicked=false;
         var admin = res.response;
         this.roleId = admin.roleId._id;
         this.role = admin.role;
+        this.adminId = admin._id;
         console.log("roleid",this.roleId);
         sessionStorage.setItem('roleId', this.roleId);
         sessionStorage.setItem('role',this.role);
+        sessionStorage.setItem('adminId',this.adminId);
         sessionStorage.setItem('adminData', JSON.stringify(admin));
+        if(admin.firstName === null){
+          this.router.navigate(['admin/edituser']);
+        }
+        else
         this.router.navigate(['admin']);
       }
       else{
