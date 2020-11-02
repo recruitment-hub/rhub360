@@ -15,11 +15,12 @@ export interface Company {
 export class CompanylistComponent implements OnInit {
   userId: string;
   companyData: any;
-  message:string;
+  message: string;
   page = 1;
   pageSize = 4;
   collectionSize = 0;
   companys: Company[];
+  pageData=[];
   constructor(public service: CommonService, public router: Router) {
     this.refreshCountries();
 
@@ -31,15 +32,18 @@ export class CompanylistComponent implements OnInit {
       console.log("company list res", res);
       this.companyData = res.value;
       this.collectionSize = this.companyData.length;
+      for (var i = 1; i <= this.collectionSize / 4; i++) {
+        this.pageData.push(i);
+      }
     })
   }
   refreshCountries() {
 
     console.log("collection size page pagesize", this.collectionSize, this.page, this.pageSize)
-    if(this.companyData?.length>0)
-    this.companys = this.companyData
-      .map((company, i) => ({ id: i + 1, ...company }))
-      .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
+    if (this.companyData?.length > 0)
+      this.companys = this.companyData
+        .map((company, i) => ({ id: i + 1, ...company }))
+        .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
   }
   addCompany() {
     this.router.navigate(['dashboard/addeditcompany']);
@@ -62,7 +66,7 @@ export class CompanylistComponent implements OnInit {
       this.service.get(`company/viewMyCompanies/${this.userId}`).subscribe((resp: any) => {
         console.log("company list res", resp);
         this.companyData = resp.value;
-        
+
       })
     })
   }

@@ -30,6 +30,7 @@ export class SidebaradminComponent implements OnInit {
   user = false;
   roleId: string;
   role: string;
+  adminId: string;
   // @Input() planId: string;
   constructor(public router: Router, public service: CommonService) { }
   menuItems: any[];
@@ -38,6 +39,7 @@ export class SidebaradminComponent implements OnInit {
     //console.log("planId", this.planId);
     this.roleId = sessionStorage.getItem('roleId');
     this.role = sessionStorage.getItem('role');
+    this.adminId = sessionStorage.getItem('adminId');
     // this.menuItems = ROUTES.filter(menuItem => menuItem.isAdmin == 1);
     if (this.roleId === '5f92b0f80d8849179c1f34ad') {
       this.menuItems = ROUTES.filter(menuItem => menuItem.isAdmin == 1);
@@ -48,27 +50,14 @@ export class SidebaradminComponent implements OnInit {
     else if (this.roleId === '5f92b185fb23ea3930bffcec') {
       this.menuItems = ROUTES.filter(menuItem => menuItem.isStaff == 1);
     }
-    /*   this.service.get(`recruiter/viewRecruiterDetails/${this.userId}`).subscribe((res: any) => {
-        console.log("profile res", res);
-        this.profileData = res.value;
-        this.user=true;
-        this.fileName = this.profileData.profileImage;
-      }) */
-
-    /*  if (this.planId === '') {
-       this.router.navigate(['plans']);
-     } */
-    // debugger;
-    /*  if(parseInt(sessionStorage.getItem("RoleId")) == 1){
-        this.menuItems = ROUTES.filter(menuItem => menuItem.isAdmin == 1);
-      }
-      else if(parseInt(sessionStorage.getItem("RoleId")) == 2){
-        this.menuItems = ROUTES.filter(menuItem => menuItem.isManager == 1);
-      }
-      else if(parseInt(sessionStorage.getItem("RoleId")) == 3){
-        this.menuItems = ROUTES.filter(menuItem => menuItem.isStaff == 1);
-      }*/
-
+    this.service.get(`admin/viewAdminDetails/${this.adminId}`).subscribe((res:any)=>{
+      console.log("admin get res",res);
+      this.profileData = res.response;
+      if(this.profileData?.profileImage!==null)
+      this.user=true;
+      this.fileName = this.profileData?.profileImage;
+    })
+    
   }
   isMobileMenu() {
     if (window.innerWidth > 991) {

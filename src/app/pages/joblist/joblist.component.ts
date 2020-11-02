@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { CommonService } from 'src/app/services/common.service';
 
@@ -27,10 +27,12 @@ export class JoblistComponent implements OnInit {
   jobs: Job[];
   message: string;
   pageOfItems: Array<any>;
+  adminId: string;
 
-  constructor(public service: CommonService, public router: Router, public spinner: NgxSpinnerService) {
+  constructor(public service: CommonService, public router: Router, public spinner: NgxSpinnerService,public route:ActivatedRoute) {
     this.refreshCountries();
-
+    this.userId = this.route.snapshot.params['id'];
+   
   }
   refreshCountries() {
 
@@ -41,17 +43,13 @@ export class JoblistComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.spinner.show();
-
-    setTimeout(() => {
-      /** spinner ends after 5 seconds */
-      this.spinner.hide();
-    }, 5000);
     this.userId = sessionStorage.getItem('userId');
-    console.log("userid",this.userId);
+    this.adminId = sessionStorage.getItem('adminId');
+    
+    console.log("userid adminid",this.userId,this.adminId);
     if (this.userId !== null) {
       this.service.get(`job/viewJobsByRecruiter/${this.userId}`).subscribe((res: any) => {
-        console.log("job list res", res);
+        console.log("job list res recruiter", res);
         this.jobData = res.value;
         this.collectionSize = this.jobData.length;
         //this.total=this.jobData.length;

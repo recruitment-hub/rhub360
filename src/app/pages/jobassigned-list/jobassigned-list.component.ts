@@ -28,12 +28,13 @@ export class JobassignedListComponent implements OnInit {
   refreshCountries() {
 
     console.log("collection size page pagesize", this.collectionSize, this.page, this.pageSize)
-    /* this.jobs = this.jobData
+    if(this.jobData?.length>0)
+     this.jobs = this.jobData
       .map((job, i) => ({ id: i + 1, ...job }))
-      .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize); */
+      .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize); 
   }
   ngOnInit(): void {
-    this.service.get(`job/jobAssignedByMe/${this.adminId}`).subscribe((res: any) => {
+    this.service.get(`job/jobAssignedToMe/${this.adminId}`).subscribe((res: any) => {
       console.log('job assign list res', res);
       this.jobData = res.value;
     })

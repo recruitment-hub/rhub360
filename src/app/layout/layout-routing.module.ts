@@ -32,6 +32,9 @@ const routes: Routes = [
     path:'joblist',component:JoblistComponent
   },
   {
+    path:'joblist/:id',component:JoblistComponent
+  },
+  {
     path:'plans',component:PlansComponent
   },
   {

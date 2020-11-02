@@ -25,13 +25,13 @@
     <div class="sidebar">
         <!-- Sidebar user (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-         <!--  <div *ngIf="user" class="image">
-            <img src="https://recruiter-gallery.s3.us-east-2.amazonaws.com/{{fileName}}" class="img-circle elevation-2" alt="User Image">
+            <div *ngIf="user" class="image">
+              <img src="https://recruiter-gallery.s3.us-east-2.amazonaws.com/{{fileName}}" class="img-circle elevation-2" alt="User Image">
+            </div>
+            <div class="info">
+              <a href [routerLink]="['/admin/edituser']"class="d-block">{{profileData?.firstName}}&nbsp;{{profileData?.lastName}}</a>
+            </div>
           </div>
-          <div class="info">
-            <a href [routerLink]="['/admin/edituser']"class="d-block">{{profileData?.firstName}}&nbsp;{{profileData?.lastName}}</a>
-          </div> -->
-        </div>
     <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class

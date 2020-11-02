@@ -117,7 +117,7 @@
 
                     <select class="form-control" formControlName="assignTo" placeholder="" data-size="7"
                       data-style="btn btn-primary btn-round btn-block" title="Select User">
-                      <option *ngFor="let user of userData" [value]="user?._id">
+                      <option *ngFor="let user of userFiltered" [value]="user?._id">
                         {{user?.firstName}}&nbsp;{{user?.lastName}}</option>
                     </select>
 

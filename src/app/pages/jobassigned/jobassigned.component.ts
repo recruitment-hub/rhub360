@@ -18,6 +18,7 @@ export class JobassignedComponent implements OnInit {
   public ngForm = new FormGroup({
     assignTo: new FormControl('', [Validators.required])
   })
+  userFiltered=[];
   constructor(public service: CommonService, public router: Router, public route: ActivatedRoute) {
     this.jobId = this.route.snapshot.params['id'];
     this.adminData = JSON.parse(sessionStorage.getItem('adminData'));
@@ -38,6 +39,13 @@ export class JobassignedComponent implements OnInit {
       this.service.get(`admin/getAdminUsers`).subscribe((resp: any) => {
         console.log("user list res", resp);
         this.userData = resp.response;
+        this.userData.forEach(user=>{
+        this.service.get(`job/jobAssignedToMe/${user._id}`).subscribe((response:any)=>{
+          console.log("job assigned res",response);
+          if(response.value.length===0)
+          this.userFiltered.push(user);
+        })
+        })
       })
     })
   }

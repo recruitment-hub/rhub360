@@ -56,7 +56,7 @@ export class UserloginComponent implements OnInit {
           this.router.navigate(['dashboard']);
         }
         else{
-          this.router.navigate(['dashboard/joblist']);
+          this.router.navigate(['dashboard/joblist',this.userId]);
         }
         })
       }
