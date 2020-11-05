@@ -1,0 +1,96 @@
+<div class="wrapper main">
+    <div class="main">
+        <div class="contact-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 ml-auto mr-auto card form-box">
+                        <h2 class="title custom-title">Job Details</h2>
+                        <form [formGroup]="ngForm" (ngSubmit)="jobSubmit()" role="form" id="contact-form">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Job Title</label>
+                                    <div class="form-group">
+                                        <input type="text" formControlName="jobTitle" placeholder=""
+                                            [value]=ngForm?.value.jobTitle class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 select-custom">
+                                    <label>Company</label>
+                                    <div class="form-group">
+                                        <div class="dropdown bootstrap-select">
+                                            <select class="selectpicker" formControlName="companyId"
+                                                placeholder="Company Name" data-size="7" data-style="btn-round"
+                                                title="Single Select" tabindex="-98">
+                                                <option *ngFor="let company of companyData" [value]="company?._id">
+                                                    {{company?.companyName}}</option>
+                                            </select> </div>
+                                        <!--  <select class="form-control" formControlName="companyId"
+                                            placeholder="Company Name" [value]=ngForm?.value.companyName data-size="7"
+                                             data-size="7" data-style="btn-round" title="Single Select">
+                                            <option *ngFor="let company of companyData" [value]="company?._id">
+                                                {{company?.companyName}}</option>
+                                        </select> -->
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 select-custom">
+                                    <label>Location</label>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" formControlName="jobLocation"
+                                            placeholder="" [value]=ngForm?.value.jobLocation required>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 select-custom">
+                                    <label>Experience</label>
+                                    <div class="form-group" style="display:flex;">
+                                        <input type="text" class="form-control" formControlName="yearsOfExp" id="exp"
+                                            placeholder="" [value]=ngForm?.value.yearsOfExp name="yearsOfExp" required>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 select-custom">
+                                    <label>Salary</label>
+                                    <div class="form-group" style="display:flex;">
+                                        <div class="col-md-6">
+
+                                            <input type="text" class="form-control" formControlName="minSalaryRange"
+                                                id="minsalary" [value]=ngForm?.value.minSalaryRange placeholder=""
+                                                name="minSalaryRange" required>
+                                        </div>
+                                        <div class="col-md-6">
+
+                                            <input type="text" class="form-control" formControlName="maxSalaryRange"
+                                                id="maxsalary" [value]=ngForm?.value.maxSalaryRange placeholder=""
+                                                name="maxSalaryRange" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 select-custom">
+                                    <label>Number Of Vacancy</label>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" formControlName="noOfVacancies"
+                                            id="noofvacancy" [value]=ngForm?.value.noOfVacancies placeholder=""
+                                            name="noOfVacancies" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Description</label>
+                                    <div class="form-group">
+                                        <textarea class="form-control" formControlName="jobDescription"
+                                            [value]=ngForm?.value.jobDescription>  </textarea>
+                                    </div>
+                                </div>
+                                <div class="submit text-center">
+                                    <input type="submit" class="btn btn-info btn-raised btn-round" value="SAVE">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

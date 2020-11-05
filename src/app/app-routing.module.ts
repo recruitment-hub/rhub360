@@ -1,27 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { DashboardAdminComponent } from './layout-admin/dashboard-admin/dashboard-admin.component';
-import { DashboardComponent } from './layout/dashboard/dashboard.component';
+import { RegisterComponent } from './authentication/register/register.component';
+import { DashboardComponent } from './recruiterhome/dashboard/dashboard.component';
 
 const routes: Routes = [
+  { path: 'auth', loadChildren: './authentication/authentication.module#AuthenticationModule' },
   {
-    path: 'dashboard',
-    component: DashboardComponent,
+    path: 'dashboard', component: DashboardComponent,
     children: [
-        {
-      path: '',
-      loadChildren: './layout/layout.module#LayoutModule'
-    }],
+      {
+        path: '',
+        loadChildren: './recruiterhome/recruiterhome.module#RecruiterhomeModule'
+      }]
   },
-  {
-    path: 'admin',
-    component: DashboardAdminComponent,
-    children: [
-        {
-      path: '',
-      loadChildren: './layout-admin/layout-admin.module#LayoutAdminModule'
-    }],
-  }
+  { path: 'register', component: RegisterComponent },
 ];
 
 @NgModule({

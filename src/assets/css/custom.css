@@ -1,0 +1,238 @@
+/*.sidenav { height: 100%; width: 200px; position: fixed; z-index: 1; top: 63px; left: 0; background-color: #007FEA; overflow-x: hidden; padding-top: 20px; }
+.sidenav a { padding: 6px 8px 6px 16px; text-decoration: none; font-size: 18px; color: #fff; display: block; }
+.sidenav a:hover { color: #f1f1f1; }*/
+.main { margin-left: 140px;margin-top:50px; background: transparent !important;}
+.custom-title{color:#007FEA !important;}
+.martop0{margin-top:0px;}
+/*.card {    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2) !important;}*/
+.btn-info {background-color: #007FEA !important;}
+:focus{ border-color: #007FEA !important; }
+.form-control:focus{
+  border-color: #007FEA !important; 
+}
+.info-horizontal .icon {
+    margin-top: 0px !important;
+  }
+  .input-group-text,.form-control{
+      border-color: #007FFB !important;
+  }
+body{
+    background-image: url('../../assets/custom-img/block-bg.png');
+    background-size: cover;
+    font-family: 'Montserrat', sans-serif;
+        background-size: cover;
+    background-repeat: no-repeat;
+}
+.signup-page {
+  background-image: url('../../assets/custom-img/signup-banner.png');
+      background-size: cover;
+    background-repeat: no-repeat;
+}
+.login-page {
+  background-image: url('../../assets/custom-img/login-bg.png');
+      background-size: cover;
+    background-repeat: no-repeat;
+}
+.line{
+      border-color: #fff;
+    width: 180px;
+}
+.select-custom .bootstrap-select{width:100% !important;}
+.select-custom .dropdown-toggle{
+  background-color: transparent;
+    border: 1px solid #E3E3E3;
+    border-radius: 30px;
+    color: #2c2c2c;
+    height: auto;
+    line-height: normal;
+    font-size: 0.8571em;   
+    transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.select-custom .show>.btn.dropdown-toggle{
+    background-color: transparent;
+    color: #2c2c2c;
+}
+.form-box{
+  padding: 0px 30px 0px;
+}
+.contact-page .container {
+    max-width: 1100px !important;
+}
+#wrapper {
+      margin-top: 75px;
+}
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 0;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    background: #007FEA;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #fff !important;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+/*Register page css*/
+.signup-page .now-ui-icons{
+  color: #2a2a2a !important;
+}
+.info-horizontal .now-ui-icons{
+  color: #007FEA !important;
+}
+.signup-page .page-header p.description {color:#2a2a2a;font-size:14px;}
+.signup-page .header-filter .info-title{
+  color: #007FEA !important;
+}
+.signup-page .navbar {box-shadow: none;background-color: transparent !important;}
+.page-header:before {
+    background-color: transparent;
+}
+.signup-page .navbar .navbar-nav .nav-link:not(.btn){
+      font-size: 14px !important;
+    font-weight: 500;
+    color: #000 !important;
+}
+.social .btn.btn-icon {
+  background: #007FEA !important;
+}
+.signup-page .card-signup {
+  margin-bottom: 0px !important;
+}
+/*End*/
+.login-footer{ color:#007FEA !important;font-size: 10px;font-weight:500;}
+.form-title{color:#007FEA !important;font-weight: 600;font-size: 25px;}
+.add-link{    
+    display: flex;
+    justify-content: flex-end;
+    /*padding: 30px 0px;*/
+}
+.add-link button{
+        margin: 31px 10px 0px;
+        border-radius: 10em;
+}
+.add-link h3{padding: 0px;}
+.pad0{padding:0px;}
+.mar-top-20{margin-top:20px;}
+.a-bor-none:hover{
+        border: none !important;
+        transform: none !important;
+}
+.a-bor-none{
+    border-bottom: 0px !important;
+}
+.plan-sec .category{
+    color: #000;
+}
+.plan-sec .card-description {font-size:14px;}
+.plan-sec .price {    
+    font-size: 35px;
+    font-weight: 600;
+}
+.plan-desc {
+        font-size: 17px;
+    width: 400px;
+    margin: auto;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+/*media query*/
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 250px;
+    }
+
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+        width: 250px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 0;
+    }
+
+    #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+    
+
+}
+@media(max-width:768px){
+  .main { margin-left: 0px; }
+}

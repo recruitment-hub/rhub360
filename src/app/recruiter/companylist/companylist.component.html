@@ -1,0 +1,91 @@
+<div class="wrapper main">
+    <div class="main">
+       <div class="contact-content">
+          <div class="container">
+             <div class="row">
+                <div class="col-md-10 ml-auto mr-auto card form-box">
+                   <div id="tables">
+                     <div class="row">
+                       <div class="col-md-6">
+                         <h4 class="pad0 title custom-title">Company Listing</h4>
+                      </div>
+                         <div class="col-md-6 add-link">
+                                  <a class="a-bor-none"><button type="button" rel="tooltip" class="btn btn-info btn-icon btn-sm " data-original-title="" title="" (click)="addCompany()">
+                                <i class="now-ui-icons ui-1_simple-add"></i>
+                              </button></a>
+                              <h4 class="pad0 color-black">Add Company</h4>
+                       </div>
+                       <div class="col-md-12 ml-auto mr-auto">
+                         <div class="">
+                           <div class="card-body">
+                             <div class="table-responsive">
+                               <table class="table">
+                                 <thead class="">
+                                   <tr>
+                                   <th class="text-center">
+                                     Company
+                                   </th>
+                                   <th>
+                                     Industry
+                                   </th>
+                                   <th class="text-center">
+                                     Location
+                                   </th>
+                                   <th class="text-center">
+                                     Website
+                                   </th>
+                                   <th class="text-right">
+                                     Actions
+                                   </th>
+                                 </tr></thead>
+                                 <tbody>
+                                    <tr *ngFor="let company of companyData | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                                        <td class="text-center">
+                                          {{company?.companyName}}
+                                        </td>
+                                        <td class="text-center">
+                                          {{company?.companyIndustry}}
+                                        </td>
+                                        <td class="text-center">
+                                          {{company?.companyLocations}}
+                                        </td>
+                                        <td class="text-center">
+                                          {{company?.companyUrl}}
+                                        </td>
+                                     <td class="text-right">
+                                       <button type="button" rel="tooltip" class="btn btn-info btn-icon btn-sm btn-round" data-original-title="" (click)="viewCompany(company?._id)" title="View Company">
+                                         <i class="now-ui-icons users_single-02"></i>
+                                       </button>
+                                       <button type="button" rel="tooltip" class="btn btn-success btn-icon btn-sm   btn-round" data-original-title="" (click)="editCompany(company?._id)" title="Edit Company">
+                                         <i class="now-ui-icons ui-2_settings-90"></i>
+                                       </button>
+                                       <button type="button" rel="tooltip" class="btn btn-danger btn-icon btn-sm   btn-round" data-original-title="" (click)="deleteCompany(company?._id)" title="Delete Company">
+                                         <i class="now-ui-icons ui-1_simple-remove"></i>
+                                       </button>
+                                     </td>
+                                   </tr>
+                                 </tbody>
+                               </table>
+                               <div class="d-flex justify-content-between p-2">
+                                <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
+                                  aria-label="Default pagination" class="pagination-danger" (pageChange)="refreshCountries()">
+                                </ngb-pagination>
+                                 <select class="custom-select" style="width: auto" [(ngModel)]="pageSize"
+                                  (ngModelChange)="refreshCountries()">
+                                  <option [ngValue]="2">2 items per page</option>
+                                  <option [ngValue]="4">4 items per page</option>
+                                  <option [ngValue]="6">6 items per page</option>
+                                </select>
+                              </div> 
+                             </div>
+                           </div>
+                         </div>
+                       </div>
+                     </div>
+       </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>

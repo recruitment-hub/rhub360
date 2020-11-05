@@ -1,0 +1,304 @@
+<div class="wrapper main">
+    <div class="main">
+        <div class="contact-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 ml-auto mr-auto card form-box">
+                        <h2 class="title custom-title">Edit Profile</h2>
+                        <form [formGroup]="ngForm" role="form" id="contact-form" (ngSubmit)="profileSubmit()">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                                        <div *ngIf="imgshow" class="fileinput-new thumbnail img-circle img-raised">
+                                            <img src="https://recruiter-gallery.s3.us-east-2.amazonaws.com/{{fileName}}"
+                                                alt="...">
+                                        </div>
+                                        <div class="fileinput-preview fileinput-exists thumbnail img-circle img-raised">
+                                        </div>
+                                        <div>
+                                            <span class="btn btn-raised btn-round btn-default btn-file">
+                                                <span class="fileinput-new">Change Photo</span>
+                                                <span class="fileinput-exists">Change</span>
+                                                <input type="file" accept="image/*" placeholder="Choose file"
+                                                    name="profileImage" (change)="onChangeImage($event)"
+                                                    formControlName="profileImage" class="form-control">
+                                            </span>
+                                            <br>
+                                            <a href="#pablo" class="btn btn-danger btn-round fileinput-exists"
+                                                data-dismiss="fileinput"><i class="now-ui-icons ui-1_simple-remove"></i>
+                                                Remove</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>First name</label>
+                                    <div class="form-group">
+                                        <input type="text" formControlName="firstName" [value]=ngForm?.value.firstName
+                                            class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Last Name</label>
+                                    <div class="form-group">
+                                        <input type="text" formControlName="lastName" [value]=ngForm?.value.lastName
+                                            class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Country</label>
+                                    <div class="form-group">
+                                        <input type="text" formControlName="countryName"
+                                            [value]=ngForm?.value.countryName class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>State</label>
+                                    <div class="form-group">
+                                        <input type="text" formControlName="stateName" [value]=ngForm?.value.stateName
+                                            class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>City</label>
+                                    <div class="form-group">
+                                        <input type="text" formControlName="cityName" [value]=ngForm?.value.cityName
+                                            class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Company</label>
+                                    <div class="form-group">
+                                        <input type="text" formControlName="companyName" placeholder=""
+                                            [value]=ngForm?.value.companyName class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Job Role</label>
+                                    <div class="form-group">
+                                        <input type="text" formControlName="profileTitle"
+                                            [value]=ngForm?.value.profileTitle class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>DOB</label>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control datepicker" formControlName="dob"
+                                            placeholder="MM/DD/YYYY" [value]=ngForm?.value.dob>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Phone Number</label>
+                                    <div class="form-group">
+                                        <input type="text" formControlName="phoneNumber"
+                                            [value]=ngForm?.value.phoneNumber class="form-control">
+                                    </div>
+
+                                    <div class="error"
+                                        *ngIf=" u.phoneNumber.errors && ngForm.controls['phoneNumber'].value!='' && ngForm.controls['phoneNumber'].value!=null">
+                                        <label class="col" class="text-danger"
+                                            *ngIf="ngForm.controls['phoneNumber'].hasError('required') || ngForm.controls['phoneNumber'].hasError('hasNumber')">
+                                            Invalid Phone No
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Zip Code</label>
+                                    <div class="form-group">
+                                        <input type="text" formControlName="zipcode" [value]=ngForm?.value.zipcode
+                                            class="form-control">
+                                    </div>
+                                    <div class="error"
+                                        *ngIf=" u.zipcode.errors && ngForm.controls['zipcode'].value!='' && ngForm.controls['zipcode'].value!=null">
+                                        <label class="col" class="text-danger"
+                                            *ngIf="ngForm.controls['zipcode'].hasError('required') || ngForm.controls['zipcode'].hasError('hasNumber')">
+                                            Invalid Zipcode
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Plan Name</label>
+                                    <div class="form-group">
+                                        <input type="text" formControlName="planName" [value]=ngForm?.value.planName
+                                            class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Facebook URL</label>
+                                    <div class="form-group">
+                                        <input type="text" formControlName="facebook" [value]=ngForm?.value.facebook
+                                            class="form-control">
+                                    </div>
+                                    <div class="error"
+                                        *ngIf=" u.facebook.errors && ngForm.controls['facebook'].value!='' && ngForm.controls['facebook'].value!=null">
+                                        <label class="col" class="text-danger"
+                                            *ngIf="ngForm.controls['facebook'].hasError('required') || ngForm.controls['facebook'].hasError('hasUrl')">
+                                            Invalid URL
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Twitter URL</label>
+                                    <div class="form-group">
+                                        <input type="text" formControlName="twitter" [value]=ngForm?.value.twitter
+                                            class="form-control">
+                                    </div>
+                                    <div class="error"
+                                        *ngIf=" u.twitter.errors && ngForm.controls['twitter'].value!='' && ngForm.controls['twitter'].value!=null">
+                                        <label class="col" class="text-danger"
+                                            *ngIf="ngForm.controls['twitter'].hasError('required') || ngForm.controls['twitter'].hasError('hasUrl')">
+                                            Invalid URL
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>LinkedIn URL</label>
+                                    <div class="form-group">
+                                        <input type="text" formControlName="linkedin" [value]=ngForm?.value.linkedin
+                                            class="form-control">
+                                    </div>
+                                    <div class="error"
+                                        *ngIf=" u.linkedin.errors && ngForm.controls['linkedin'].value!='' && ngForm.controls['linkedin'].value!=null">
+                                        <label class="col" class="text-danger"
+                                            *ngIf="ngForm.controls['linkedin'].hasError('required') || ngForm.controls['linkedin'].hasError('hasUrl')">
+                                            Invalid URL
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Description</label>
+                                    <div class="form-group">
+                                        <!-- <input type="text" value="" class="form-control"> -->
+                                        <textarea class="form-control" formControlName="description"
+                                            [value]=ngForm?.value.description>	</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="submit text-center">
+                                <input type="submit" class="btn btn-info btn-raised btn-round" value="SAVE">
+                            </div>
+                        </form>
+                        <br>
+                        <!-- change password section -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card card-profile">
+                                    <div class="card-avatar">
+                                        <img class="img " src="../../../assets/custom-img/password.png">
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="card-title custom-title">Change Password</h4>
+                                        <form [formGroup]="proForm" role="form" (ngSubmit)="changePassword()">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <label>Old Password</label>
+                                                    <div class="form-group">
+                                                        <input type="password" formControlName="old"
+                                                            class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label>New Password</label>
+                                                    <div class="form-group">
+                                                        <input type="password" formControlName="newpass"
+                                                            class="form-control">
+                                                    </div>
+                                                    <div *ngIf="submitted && u.newpass?.errors" class="error">
+                                                        <div class="text-danger" *ngIf="u.newpass?.errors.required">
+                                                            Please enter valid
+                                                            password
+                                                        </div>
+                                                    </div>
+                                                    <div class="error"
+                                                        *ngIf=" u.newpass?.errors && proForm.controls['newpass'].value!='' && proForm.controls['newpass'].value!=null">
+                                                        <label class="col" class="text-danger"
+                                                            *ngIf="proForm.controls['newpass'].hasError('required') || proForm.controls['newpass'].hasError('hasNumber')">
+                                                            Must contain atleast 1 number!
+                                                        </label>
+
+
+                                                        <label class="text-danger"
+                                                            *ngIf="proForm.controls['newpass'].hasError('required') || proForm.controls['newpass'].hasError('minlength')">
+
+                                                            Must be at least 8 characters!
+                                                        </label>
+
+                                                        <label class="col" class="text-danger"
+                                                            *ngIf="proForm.controls['newpass'].hasError('required') || proForm.controls['newpass'].hasError('hasNumber')">
+
+                                                            Must contain at least 1 number!
+                                                        </label>
+
+                                                        <label class="col" class="text-danger"
+                                                            *ngIf="proForm.controls['[newpass]']?.hasError('required') || proForm.controls['newpass']?.hasError('hasCapitalCase')">
+
+                                                            Must contain at least 1 in Capital Case!
+                                                        </label>
+
+                                                        <label class="col" class="text-danger"
+                                                            *ngIf="proForm.controls['newpass'].hasError('required') || proForm.controls['newpass'].hasError('hasSmallCase')">
+
+                                                            Must contain at least 1 Letter in Small Case!
+                                                        </label>
+
+                                                        <label class="col" class="text-danger"
+                                                            *ngIf="proForm.controls['newpass'].hasError('required') || proForm.controls['newpass'].hasError('hasSpecialCharacters')">
+
+                                                            Must contain at least 1 Special Character!
+                                                        </label>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label>Confirm Password</label>
+                                                    <div class="form-group">
+                                                        <input type="password" formControlName="cpass"
+                                                            class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="submit text-center">
+                                                <input type="submit" class="btn btn-info btn-raised btn-round"
+                                                    value="Reset">
+                                            </div>
+                                        </form>
+                                        <div class="card-footer">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ml-auto mr-auto">
+                        <div class="card card-profile martop0">
+                            <img class="img rounded" src="../../../assets/img/card-blog2.jpg">
+                            <div *ngIf="imgshow" class="card-avatar">
+                                <a href="#pablo">
+                                    <img class="img img-raised"
+                                        src="https://recruiter-gallery.s3.us-east-2.amazonaws.com/{{fileName}}">
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">{{ngForm.value.firstName}}&nbsp;{{ngForm.value.lastName}}</h4>
+                                <h6 class="category text-gray">
+                                    {{ngForm.value.profileTitle}}
+                                </h6>
+                                <p class="card-description">
+                                    {{ngForm.value.description}}
+                                </p>
+                                <div class="card-footer">
+                                    <a href="#pablo" class="btn btn-icon btn-twitter btn-round"><i
+                                            class="fab fa-twitter"></i></a>
+                                    <a href="#pablo" class="btn btn-icon btn-facebook btn-round"><i
+                                            class="fab fa-facebook-square"></i></a>
+                                    <a href="#pablo" class="btn btn-icon btn-google btn-round"><i
+                                            class="fab fa-google"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

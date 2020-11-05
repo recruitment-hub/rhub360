@@ -1,103 +1,54 @@
-<div class="hold-transition sidebar-mini layout-fixed">
-  <div class="wrapper">
-    <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-      <!-- Left navbar links -->
-      <ul class="navbar-nav">
-        <!-- <li class="nav-item">
-          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-        </li> -->
-      </ul>
-
-      <!-- Right navbar links -->
-      <ul class="navbar-nav ml-auto">
-        <!-- SEARCH FORM -->
-        <form class="form-inline ml-3">
-          <div class="input-group input-group-sm">
-            <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-            <div class="input-group-append">
-              <button class="btn btn-navbar" type="submit" class="searchbar">
-                <i class="fas fa-search"></i>
-              </button>
-            </div>
-          </div>
-        </form>
-        <!-- Messages Dropdown Menu -->
-        <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <img src="../../../assets/header-icon.png" width="30px" style="position: relative;
-            left: 20px;">
-            <span class="badge badge-danger navbar-badge"></span>
+<nav class="navbar navbar-expand-lg bg-white fixed-top">
+    <a class="navbar-brand" href="#pablo"><img src="../../../assets/custom-img/logo.png" width="200"></a>
+    <div class="container">
+       <div class="navbar-translate">
+          <a href="#menu-toggle" class="" id="menu-toggle">
+          <span class="navbar-toggler-bar bar1"></span>
+          <span class="navbar-toggler-bar bar2"></span>
+          <span class="navbar-toggler-bar bar3"></span>
           </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <a href="#" class="dropdown-item">
-              <!-- Message Start -->
-              <div class="media">
-                <img src="../../../assets/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-                <div class="media-body">
-                  <h3 class="dropdown-item-title">
-                    Brad Diesel
-                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                  </h3>
-                  <p class="text-sm">Call me whenever you can...</p>
-                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+       </div>
+       <!-- <div class="navbar-translate">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#example-navbar-profile" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-bar bar1"></span>
+            <span class="navbar-toggler-bar bar2"></span>
+            <span class="navbar-toggler-bar bar3"></span>
+          </button>
+          </div> -->
+       <div class="collapse navbar-collapse show" id="example-navbar-profile" data-nav-image="../../../assets/img//blurred-image-1.jpg">
+          <ul class="navbar-nav ml-auto">
+             <li class="nav-item active">
+                <div class="input-group">
+                   <input type="text" class="form-control" placeholder="Search">
+                   <div class="input-group-append">
+                      <span class="input-group-text"><i class="now-ui-icons ui-1_zoom-bold"></i></span>
+                   </div>
                 </div>
-              </div>
-              <!-- Message End -->
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <!-- Message Start -->
-              <div class="media">
-                <img src="../../../assets/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                <div class="media-body">
-                  <h3 class="dropdown-item-title">
-                    John Pierce
-                    <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                  </h3>
-                  <p class="text-sm">I got your message bro</p>
-                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+             </li>
+             <li class="nav-item">
+                <a class="nav-link" href="#pablo">
+                   <i class="now-ui-icons media-2_sound-wave"></i>
+                   <p><span class="d-lg-none d-md-block">Stats</span></p>
+                </a>
+             </li>
+             <li class="nav-item dropdown nav-item-image">
+                <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
+                   <div *ngIf="user" class="">
+                      <img src="https://recruiter-gallery.s3.us-east-2.amazonaws.com/{{fileName}}"  alt="">
+                   </div>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                   
+                    <a href [routerLink]="['/dashboard/editprofile']" class="dropdown-item">
+                        Edit
+                      </a>
+                      <a href [routerLink]="['/userlogin']" class="dropdown-item">Logout
+                      </a>
                 </div>
-              </div>
-              <!-- Message End -->
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <!-- Message Start -->
-              <div class="media">
-                <img src="../../../assets/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-                <div class="media-body">
-                  <h3 class="dropdown-item-title">
-                    Nora Silvester
-                    <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                  </h3>
-                  <p class="text-sm">The subject goes here</p>
-                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                </div>
-              </div>
-              <!-- Message End -->
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-          </div>
-        </li>
-        <!-- Notifications Dropdown Menu -->
-        <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <img src="../../../assets/user.png" width="30px" class="user">
-            <span class="badge badge-warning navbar-badge"></span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <div class="dropdown-divider"></div>
-            <a href [routerLink]="['/dashboard/editprofile']" class="dropdown-item">
-              Edit
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href [routerLink]="['/login']" class="dropdown-item">Logout
-            </a>
-            <div class="dropdown-divider"></div>
-          </div>
-        </li>
-      </ul>
-    </nav>
-  </div>
+             </li>
+          </ul>
+       </div>
+    </div>
+ </nav>
+ 
+ 

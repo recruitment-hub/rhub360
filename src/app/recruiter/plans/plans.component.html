@@ -1,0 +1,56 @@
+<div class="wrapper main plan-sec">
+    <div class="main">
+       <div class="contact-content">
+          <div class="container">
+                <h3 class="custom-title card-title text-center">Pick the best plan for you</h3>
+                <p class="text-center plan-desc" width="300">You have free unlimited updates and premium support on each package.</p>
+             <div class="row ">
+                <div class="col-md-1"></div>
+         <div class="col-md-3">
+           <div class="card card-pricing">
+             <div class="card-body">
+               <h6 class="category color-black">{{planData[0]?.planName}}</h6>
+               <div class="icon icon-info">
+                 <i class="now-ui-icons objects_spaceship"></i>
+               </div>
+               <h3 class="card-title .price">{{planData[0]?.planRate}}</h3>
+               <p class="card-description">
+                 This is good if your company size is between 100 and 299 employees.</p>
+               <a class="btn btn-info btn-round" (click)="planOne(planData[0]?._id)" style="color:white;">Buy Now</a>
+             </div>
+           </div>
+         </div>
+         <div class="col-md-3">
+           <div class="card card-pricing">
+             <div class="card-body">
+               <h6 class="category color-black">{{planData[1]?.planName}}</h6>
+               <div class="icon icon-info">
+                 <i class="now-ui-icons objects_diamond"></i>
+               </div>
+               <h3 class="card-title .price">{{planData[1]?.planRate}}</h3>
+               <p class="card-description">
+                 This is good if your company size is between 100 and 299 employees.</p>
+               <a  class="btn btn-info btn-round" (click)="planTwo(planData[1]?._id)" style="color:white;">Buy Now</a>
+             </div>
+           </div>
+         </div>
+         <div class="col-md-3">
+           <div class="card card-pricing">
+             <div class="card-body">
+               <h6 class="category color-black">{{planData[2]?.planName}}</h6>
+               <div class="icon icon-info">
+                 <i class="now-ui-icons education_atom"></i>
+               </div>
+               <h3 class="card-title .price">{{planData[2]?.planRate}}</h3>
+               <p class="card-description">
+                 This is good if your company size is between 100 and 299 employees.</p>
+               <a class="btn btn-info btn-round" (click)="planThree(planData[2]?._id)" style="color:white;">Buy Now</a>
+             </div>
+           </div>
+         </div>
+                <div class="col-md-1"></div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>

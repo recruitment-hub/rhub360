@@ -1,63 +1,16 @@
-<!-- 
-<div class="logo">
-    
-    <a href class="simple-text logo-normal">
-       
-        <img src="../../../assets/logo.png"/>
-    </a>
-</div>
-<div class="sidebar-wrapper">
-    <ul class="nav">
-        <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
-            <a [routerLink]="[menuItem.path]">
-                <i class="now-ui-icons {{menuItem.icon}}"></i>
-                <p>{{menuItem.title}}</p>
-            </a>
-        </li>
-    </ul>
-</div>
- -->
-<div class="main-sidebar sidebar-dark-primary">
-    <!-- Brand Logo -->
-    <a href="dashboard.html" class="brand-link logo-img">
-        <img src="../../../assets/logo.png">
-    </a>
-    <div class="sidebar">
-        <!-- Sidebar user (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-          <div *ngIf="user" class="image">
-            <img src="https://recruiter-gallery.s3.us-east-2.amazonaws.com/{{fileName}}" class="img-circle elevation-2" alt="User Image">
+<div id="wrapper">
+    <div id="sidebar-wrapper">
+       <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+            <div *ngIf="user" class="author">
+              <img src="https://recruiter-gallery.s3.us-east-2.amazonaws.com/{{fileName}}"  alt="..." class="rounded-circle img-raised" width="30">
+              <span style="color:#fff;">{{profileData?.firstName}}&nbsp;{{profileData?.lastName}}</span>
           </div>
-          <div class="info">
-            <a href [routerLink]="['/dashboard/editprofile']"class="d-block">{{profileData?.firstName}}&nbsp;{{profileData?.lastName}}</a>
-          </div>
-        </div>
-    <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <!-- Add icons to the links using the .nav-icon class
-           with font-awesome or any other icon font library -->
-          <!--   <li class="nav-item has-treeview">
-                <a href class="nav-link" routerLink="/plans">
-                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                    <p>
-                        Dashboard
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href [routerLink]="['/joblist']" class="nav-link">
-                    <i class="nav-icon fas fa-th"></i>
-                    <p>
-                        Jobs
-                    </p>
-                </a>
-            </li> -->
-            <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item has-treeview">
-                <a [routerLink]="[menuItem.path]" class="nav-link">
-                    <i class="nav-icon {{menuItem.icon}}"></i>
-                    <p>{{menuItem.title}}</p>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</div>
+          </li>
+          <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item has-treeview">
+            <a [routerLink]="[menuItem.path]" class="nav-link" >
+                <i class="now-ui-icons {{menuItem.icon}}"></i> {{menuItem.title}} </a>
+          </li>
+       </ul>
+    </div>
+ </div>

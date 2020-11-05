@@ -11,11 +11,11 @@ declare interface RouteInfo {
   isManager: number;
   isStaff: number;
 }
-const userId =sessionStorage.getItem('userId');
+const userId = sessionStorage.getItem('userId');
 export const ROUTES: RouteInfo[] = [
-  { path: '/dashboard/plans', title: 'Dashboard', icon: 'fas fa-tachometer-alt', class: '', isAdmin: 1, isManager: 0, isStaff: 0 },
-  { path: `/dashboard/joblist/${userId}`, title: 'Jobs', icon: 'fas fa-th', class: '', isAdmin: 1, isManager: 1, isStaff: 0 },
-  { path: '/dashboard/companylist', title: 'Company', icon: 'fas fa-building', class: '', isAdmin: 1, isManager: 1, isStaff: 0 }
+  { path: '/dashboard/plans', title: 'Dashboard', icon: 'design_app', class: '', isAdmin: 1, isManager: 0, isStaff: 0 },
+  { path: '/dashboard/joblist', title: 'Jobs', icon: 'business_briefcase-24', class: '', isAdmin: 1, isManager: 1, isStaff: 0 },
+  { path: '/dashboard/companylist', title: 'Company', icon: 'business_bank', class: '', isAdmin: 1, isManager: 1, isStaff: 0 }
 ];
 
 @Component({
@@ -27,7 +27,8 @@ export class SidebarComponent implements OnInit {
   userId: string;
   profileData: any;
   fileName: any;
-user=false;
+  user = false;
+  img='../../../assets/custom-img/sample.png';
   // @Input() planId: string;
   constructor(public router: Router, public service: CommonService) { }
   menuItems: any[];
@@ -39,23 +40,11 @@ user=false;
     this.service.get(`recruiter/viewRecruiterDetails/${this.userId}`).subscribe((res: any) => {
       console.log("profile res", res);
       this.profileData = res.value;
-      this.user=true;
+      this.user = true;
       this.fileName = this.profileData.profileImage;
     })
 
-    /*  if (this.planId === '') {
-       this.router.navigate(['plans']);
-     } */
-    // debugger;
-    /*  if(parseInt(sessionStorage.getItem("RoleId")) == 1){
-        this.menuItems = ROUTES.filter(menuItem => menuItem.isAdmin == 1);
-      }
-      else if(parseInt(sessionStorage.getItem("RoleId")) == 2){
-        this.menuItems = ROUTES.filter(menuItem => menuItem.isManager == 1);
-      }
-      else if(parseInt(sessionStorage.getItem("RoleId")) == 3){
-        this.menuItems = ROUTES.filter(menuItem => menuItem.isStaff == 1);
-      }*/
+
 
   }
   isMobileMenu() {
